@@ -1,5 +1,6 @@
+"use client";
 import MyButton from "@/components/ui/button";
 
 export default function Page() {
-  return <MyButton>Đăng nhập</MyButton>;
+  return <MyButton>Đăng ký</MyButton>;
 }

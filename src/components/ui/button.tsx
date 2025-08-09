@@ -1,10 +1,16 @@
 import { Button, ButtonProps } from "@mui/material";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
-const BaseButton: FC<ButtonProps> = (props) => {
-  return <Button {...props} />;
+interface MyButtonProps extends ButtonProps {
+  children: ReactNode;
+}
+
+const MyButton: FC<MyButtonProps> = ({ children, ...props }) => {
+  return (
+    <Button variant="contained" {...props}>
+      {children}
+    </Button>
+  );
 };
-
-const MyButton = Object.assign(Button, BaseButton);
 
 export default MyButton;
