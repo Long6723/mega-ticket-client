@@ -3,12 +3,10 @@
 
   &__container {
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1280px;
     padding-left: 16px;
     padding-right: 16px;
   }
@@ -33,5 +31,105 @@
     display: flex;
     align-items: center;
     gap: 24px;
+  }
+}
+
+.header1 {
+  display: none;
+}
+@media (min-width: 481px) and (max-width: 992px) {
+  .header {
+    display: none;
+  }
+  .header1 {
+    display: flex;
+    padding: 20px 0;
+
+    &__container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    &__logo {
+      height: 40px;
+      margin-right: 20px;
+    }
+
+    &__text {
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    &__iconContainer {
+      .css-74d805-MuiButtonBase-root-MuiButton-root {
+        background-color: #000;
+      }
+    }
+    &__popupContainer {
+      .css-1toxriw-MuiList-root-MuiMenu-list {
+        padding: 0;
+      }
+      background-color: #10141b;
+      color: #fff;
+      padding: 0;
+      justify-items: center;
+    }
+    &__menuContainer {
+      .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+        width: 100vw;
+        max-width: 100vw;
+        background-color: #10141b;
+        // margin-top: 60px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 480px) {
+  .header {
+    display: none;
+  }
+  .header1 {
+    display: flex;
+    padding: 20px 0;
+
+    &__container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    &__logo {
+      height: 40px;
+      margin-right: 20px;
+    }
+
+    &__text {
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    &__iconContainer {
+      .css-74d805-MuiButtonBase-root-MuiButton-root {
+        background-color: #000;
+      }
+    }
+    &__popupContainer {
+      .css-1toxriw-MuiList-root-MuiMenu-list {
+        padding: 0;
+      }
+      background-color: #10141b;
+      color: #fff;
+      padding: 0;
+      justify-items: center;
+    }
+    &__menuContainer {
+      .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+        width: 100vw;
+        max-width: 100vw;
+        background-color: #10141b;
+        margin-left: 16px;
+      }
+    }
   }
 }
