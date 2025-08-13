@@ -1,4 +1,4 @@
-import "./footer.scss"; // Import file SCSS
+import "./footer.scss";
 
 const Footer = () => {
   return (
@@ -26,7 +26,9 @@ const Footer = () => {
             </a>
           </li>
         </ul>
-        <p className="footer__copyright">Website được tạo ra bởi LPL</p>
+        <p className="footer__copyright">
+          Copyright 2025. LPL All Rights Reservered. Dev by LuuLong
+        </p>
       </div>
     </footer>
   );

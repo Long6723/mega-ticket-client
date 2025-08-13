@@ -1,9 +1,6 @@
-"use client";
-import Banner from "@/components/core/banner";
-
 import { Container, Grid } from "@mui/material";
 
-export default function Page() {
+const Movie = () => {
   const data = [
     {
       link: "/",
@@ -51,31 +48,11 @@ export default function Page() {
   return (
     <div className="bg-[#000] text-white">
       <div className="w-full bg-[#10141b] pb-20">
-        <Banner />
         <Container>
-          <h1 className=" mt-10 mb-5 font-bold text-2xl">Phim đang chiếu</h1>
-          <Grid container spacing={2}>
-            {data.map((item, index) => {
-              return (
-                <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={index}>
-                  <div className="overflow-hidden">
-                    <a href={item.link}>
-                      <img
-                        src={item.img}
-                        alt=""
-                        className="transition-transform duration-300 hover:scale-105 w-full h-[264px] "
-                      />
-                      <p className="ml-5 my-2 text-sm text-gray-400 ">
-                        {item.date}
-                      </p>
-                      <h2 className="font-bold">{item.name}</h2>
-                    </a>
-                  </div>
-                </Grid>
-              );
-            })}
-          </Grid>
-          <h1 className=" mt-10 mb-5  font-bold text-2xl">Phim sắp chiếu</h1>
+          <h1 className="mt-10 mb-5 font-bold text-2xl text-center">
+            Phim đang chiếu
+          </h1>
+
           <Grid container spacing={2}>
             {data.map((item, index) => {
               return (
@@ -101,4 +78,6 @@ export default function Page() {
       </div>
     </div>
   );
-}
+};
+
+export default Movie;
