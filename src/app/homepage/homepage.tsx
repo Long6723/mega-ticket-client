@@ -1,6 +1,9 @@
 "use client";
 import Banner from "@/components/core/banner";
 import "./homepage.scss";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
 import { Container, Grid } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
@@ -56,13 +59,34 @@ export default function HomePage() {
       date: "01/08/2025",
       name: "MANG MẸ ĐI BỎ",
     },
+    {
+      link: "/",
+      img: "https://chieuphimquocgia.com.vn/_next/image?url=http%3A%2F%2Fapiv2.chieuphimquocgia.com.vn%2FContent%2FImages%2F0018696_0.jpg&w=1920&q=75",
+      genre: "Tâm lý, tình cảm",
+      date: "01/08/2025",
+      name: "MANG MẸ ĐI BỎ",
+    },
+    {
+      link: "/",
+      img: "https://chieuphimquocgia.com.vn/_next/image?url=http%3A%2F%2Fapiv2.chieuphimquocgia.com.vn%2FContent%2FImages%2F0018696_0.jpg&w=1920&q=75",
+      genre: "Tâm lý, tình cảm",
+      date: "01/08/2025",
+      name: "MANG MẸ ĐI BỎ",
+    },
   ];
   return (
     <div className="page">
       <div className="page__container">
         <Banner />
         <Container>
-          <h1 className="page__title">Phim đang chiếu</h1>
+          <div className="page__title">
+            <div className="page__title-left">
+              <div className="page__title-dot"></div>
+              <h1>Phim đang chiếu</h1>
+            </div>
+            <a href="/movies">Xem tất cả</a>
+          </div>
+
           <Grid container spacing={2}>
             {data.map((item, index) => (
               <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={index}>
@@ -80,7 +104,12 @@ export default function HomePage() {
             ))}
           </Grid>
 
-          <h1 className="page__title">Phim sắp chiếu</h1>
+          <div className="page__title">
+            <div className="page__title-left">
+              <div className="page__title-dot"></div>
+              <h1>Phim sắp chiếu</h1>
+            </div>
+          </div>
           <Grid container spacing={2}>
             {data.map((item, index) => (
               <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={index}>
@@ -99,17 +128,24 @@ export default function HomePage() {
           </Grid>
         </Container>
       </div>
-      <div>
+      <div className="page__container-responsive">
         <Banner />
         <Container>
-          <h1 className="page__title">Phim đang chiếu</h1>
+          <div className="page__title">
+            <div className="page__title-left">
+              <div className="page__title-dot"></div>
+              <h1>Phim đang chiếu</h1>
+            </div>
+            <a href="/movies">Xem tất cả</a>
+          </div>
           <Swiper
             effect={"coverflow"}
             grabCursor={true}
+            loop={true}
             centeredSlides={true}
-            slidesPerView={"auto"}
+            slidesPerView={2}
             coverflowEffect={{
-              rotate: 50,
+              rotate: 30,
               stretch: 0,
               depth: 100,
               modifier: 1,
@@ -117,24 +153,68 @@ export default function HomePage() {
             }}
             pagination={true}
             modules={[EffectCoverflow, Pagination]}
+            breakpoints={{
+              481: { slidesPerView: 3 },
+              768: { slidesPerView: 4 },
+            }}
             className="mySwiper"
           >
-            <div>
-              {data.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <div className="movie-card">
-                    <a href={item.link}>
-                      <img src={item.img} alt="" className="movie-card__img" />
-                      <p className="movie-card__info">
-                        <span>{item.genre}</span>
-                        <span>{item.date}</span>
-                      </p>
-                      <h2 className="movie-card__name">{item.name}</h2>
-                    </a>
-                  </div>
-                </SwiperSlide>
-              ))}
+            {data.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className="movie-card">
+                  <a href={item.link}>
+                    <img src={item.img} alt="" className="movie-card__img" />
+                    <p className="movie-card__info">
+                      <span>{item.genre}</span>
+                      <span>{item.date}</span>
+                    </p>
+                    <h2 className="movie-card__name">{item.name}</h2>
+                  </a>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="page__title">
+            <div className="page__title-left">
+              <div className="page__title-dot"></div>
+              <h1>Phim sắp chiếu</h1>
             </div>
+          </div>
+          <Swiper
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={2}
+            loop={true}
+            coverflowEffect={{
+              rotate: 30,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            pagination={true}
+            modules={[EffectCoverflow, Pagination]}
+            breakpoints={{
+              481: { slidesPerView: 3 },
+              768: { slidesPerView: 4 },
+            }}
+            className="mySwiper"
+          >
+            {data.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className="movie-card">
+                  <a href={item.link}>
+                    <img src={item.img} alt="" className="movie-card__img" />
+                    <p className="movie-card__info">
+                      <span>{item.genre}</span>
+                      <span>{item.date}</span>
+                    </p>
+                    <h2 className="movie-card__name">{item.name}</h2>
+                  </a>
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </Container>
       </div>
