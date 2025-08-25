@@ -50,3 +50,15 @@
 .nextButton {
   right: 1rem;
 }
+
+@media (min-width: 481px) and (max-width: 992px) {
+  .navButton {
+    padding: 0.45rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .navButton {
+    padding: 0.15rem;
+  }
+}
