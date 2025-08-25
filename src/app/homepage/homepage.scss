@@ -1,3 +1,5 @@
+@import "./src/scss//breakpoint.scss";
+
 .page {
   background-color: #000;
   color: #fff;
@@ -6,13 +8,44 @@
     width: 100%;
     background-color: #10141b;
     padding-bottom: 5rem; // pb-20
+    @include breakpoint(xs) {
+      display: none;
+    }
+    @include breakpoint(sm) {
+      display: none;
+    }
+    @include breakpoint(md) {
+      display: none;
+    }
+    @include breakpoint(lg) {
+      display: none;
+    }
+  }
+
+  &__container-responsive {
+    display: none;
+    @include breakpoint(xs) {
+      display: block;
+    }
+    @include breakpoint(sm) {
+      display: block;
+    }
+    @include breakpoint(md) {
+      display: block;
+    }
+    @include breakpoint(lg) {
+      display: block;
+    }
+    @include breakpoint(xl) {
+      display: none;
+    }
   }
 
   &__title {
-    margin-top: 2.5rem; // mt-10
-    margin-bottom: 1.25rem; // mb-5
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
     font-weight: 700;
-    font-size: 1.5rem; // text-2xl
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -32,6 +65,18 @@
 
 .movie-card {
   overflow: hidden;
+  @include breakpoint(xs) {
+    height: 42vh;
+  }
+  @include breakpoint(sm) {
+    height: 42vh;
+  }
+  @include breakpoint(md) {
+    height: 42vh;
+  }
+  @include breakpoint(lg) {
+    height: 42vh;
+  }
 
   &__img {
     width: 100%;
@@ -42,6 +87,22 @@
     &:hover {
       transform: scale(1.05);
     }
+    @include breakpoint(xs) {
+      -webkit-box-reflect: below 0px
+        linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+    }
+    @include breakpoint(sm) {
+      -webkit-box-reflect: below 0px
+        linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+    }
+    @include breakpoint(md) {
+      -webkit-box-reflect: below 0px
+        linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+    }
+    @include breakpoint(lg) {
+      -webkit-box-reflect: below 0px
+        linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+    }
   }
 
   &__info {
@@ -51,6 +112,19 @@
     font-size: 0.875rem;
     color: #9ca3af;
     column-gap: 1.25rem;
+
+    @include breakpoint(xs) {
+      display: none;
+    }
+    @include breakpoint(sm) {
+      display: none;
+    }
+    @include breakpoint(md) {
+      display: none;
+    }
+    @include breakpoint(lg) {
+      display: none;
+    }
   }
 
   &__name {
@@ -58,76 +132,20 @@
   }
 }
 
-.page__container-responsive {
-  display: none;
-}
-
 @media (min-width: 481px) and (max-width: 992px) {
-  .page__container {
-    display: none;
-  }
-
-  .page__container-responsive {
-    display: block;
-  }
-
   .mySwiper {
     .swiper-slide-shadow-left,
     .swiper-slide-shadow-right {
       background: rgba(0, 0, 0, 0.1);
     }
   }
-
-  .movie-card {
-    height: 42vh;
-
-    &__img {
-      width: 100%;
-      height: 264px;
-      transition: transform 0.3s ease-in-out;
-      border-radius: 12px;
-      -webkit-box-reflect: below 0px
-        linear-gradient(transparent, rgba(0, 0, 0, 0.3));
-    }
-
-    &__info {
-      display: none;
-    }
-
-    &__name {
-      text-align: center;
-      font-weight: 700;
-    }
-  }
 }
 
 @media only screen and (max-width: 480px) {
-  .page__container {
-    display: none;
-  }
-
-  .page__container-responsive {
-    display: block;
-  }
-
-  .movie-card {
-    height: 43vh;
-    &__img {
-      width: 100%;
-      height: 264px;
-      transition: transform 0.3s ease-in-out;
-      border-radius: 12px;
-      -webkit-box-reflect: below 0px
-        linear-gradient(transparent, rgba(0, 0, 0, 0.3));
-    }
-
-    &__info {
-      display: none;
-    }
-
-    &__name {
-      text-align: center;
-      font-weight: 700;
+  .mySwiper {
+    .swiper-slide-shadow-left,
+    .swiper-slide-shadow-right {
+      background: rgba(0, 0, 0, 0.1);
     }
   }
 }
