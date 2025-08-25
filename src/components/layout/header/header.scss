@@ -1,3 +1,5 @@
+@import "./src/scss/breakpoint.scss";
+
 .header {
   position: fixed;
   top: 0;
@@ -10,7 +12,6 @@
 
   &__container {
     width: 100%;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,137 +38,260 @@
     align-items: center;
     gap: 24px;
   }
+
+  // Ẩn header trên các màn hình nhỏ hơn xl
+  @include breakpoint(xs) {
+    display: none;
+  }
+  @include breakpoint(sm) {
+    display: none;
+  }
+  @include breakpoint(md) {
+    display: none;
+  }
+  @include breakpoint(lg) {
+    display: none;
+  }
 }
 
 .header1 {
   display: none;
+
+  // Hiển thị header1 trên các màn hình nhỏ hơn xl
+  @include breakpoint(xs) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #000;
+    opacity: 0.85;
+    padding: 20px 0;
+
+    &__container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__logo {
+      display: flex;
+      height: 40px;
+    }
+
+    &__text {
+      margin-left: 20px;
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    &__iconContainer {
+      .css-74d805-MuiButtonBase-root-MuiButton-root {
+        background-color: #000;
+      }
+    }
+
+    &__popupContainer {
+      .css-1toxriw-MuiList-root-MuiMenu-list {
+        padding: 0;
+      }
+      background-color: #10141b;
+      color: #fff;
+      padding: 0;
+      justify-items: center;
+    }
+    &__menuContainer {
+      .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+        width: 100vw;
+        max-width: 100vw;
+        background-color: #10141b;
+        margin-top: 20px;
+        margin-left: 16px;
+      }
+    }
+  }
+
+  @include breakpoint(sm) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #000;
+    opacity: 0.85;
+    padding: 20px 0;
+
+    &__container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__logo {
+      display: flex;
+      height: 40px;
+    }
+
+    &__text {
+      margin-left: 20px;
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    &__iconContainer {
+      .css-74d805-MuiButtonBase-root-MuiButton-root {
+        background-color: #000;
+      }
+    }
+
+    &__popupContainer {
+      .css-1toxriw-MuiList-root-MuiMenu-list {
+        padding: 0;
+      }
+      background-color: #10141b;
+      color: #fff;
+      padding: 0;
+      justify-items: center;
+    }
+    &__menuContainer {
+      .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+        width: 100vw;
+        max-width: 100vw;
+        background-color: #10141b;
+        margin-top: 20px;
+        margin-left: 16px;
+      }
+    }
+  }
+
+  @include breakpoint(md) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #000;
+    opacity: 0.85;
+    padding: 20px 0;
+
+    &__container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__logo {
+      display: flex;
+      height: 40px;
+    }
+
+    &__text {
+      margin-left: 20px;
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    &__iconContainer {
+      .css-74d805-MuiButtonBase-root-MuiButton-root {
+        background-color: #000;
+      }
+    }
+
+    &__popupContainer {
+      .css-1toxriw-MuiList-root-MuiMenu-list {
+        padding: 0;
+      }
+      background-color: #10141b;
+      color: #fff;
+      padding: 0;
+      justify-items: center;
+    }
+    &__menuContainer {
+      .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+        width: 100vw;
+        max-width: 100vw;
+        background-color: #10141b;
+        margin-top: 20px;
+        margin-left: 16px;
+      }
+    }
+  }
+
+  @include breakpoint(lg) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #000;
+    opacity: 0.85;
+    padding: 20px 0;
+
+    &__container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__logo {
+      display: flex;
+      height: 40px;
+    }
+
+    &__text {
+      margin-left: 20px;
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    &__iconContainer {
+      .css-74d805-MuiButtonBase-root-MuiButton-root {
+        background-color: #000;
+      }
+    }
+
+    &__popupContainer {
+      .css-1toxriw-MuiList-root-MuiMenu-list {
+        padding: 0;
+      }
+      background-color: #10141b;
+      color: #fff;
+      padding: 0;
+      justify-items: center;
+    }
+    &__menuContainer {
+      .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+        width: 100vw;
+        max-width: 100vw;
+        background-color: #10141b;
+        margin-top: 20px;
+        margin-left: 16px;
+      }
+    }
+  }
 }
 
 .header1__menuContainer {
   display: none;
-}
 
-@media (min-width: 481px) and (max-width: 992px) {
-  .header {
-    display: none;
-  }
-  .header1__menuContainer {
+  @include breakpoint(xs) {
     display: block;
   }
-  .header1 {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: #000;
-    opacity: 0.85;
-    padding: 20px 0;
-
-    &__container {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    &__logo {
-      display: flex;
-      height: 40px;
-    }
-
-    &__text {
-      margin-left: 20px;
-      font-weight: 700;
-      font-size: 24px;
-    }
-
-    &__iconContainer {
-      .css-74d805-MuiButtonBase-root-MuiButton-root {
-        background-color: #000;
-      }
-    }
-
-    &__popupContainer {
-      .css-1toxriw-MuiList-root-MuiMenu-list {
-        padding: 0;
-      }
-      background-color: #10141b;
-      color: #fff;
-      padding: 0;
-      justify-items: center;
-    }
-    &__menuContainer {
-      .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
-        width: 100vw;
-        max-width: 100vw;
-        background-color: #10141b;
-        margin-top: 20px;
-        margin-left: 16px;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .header {
-    display: none;
-  }
-  .header1__menuContainer {
+  @include breakpoint(sm) {
     display: block;
   }
-  .header1 {
+  @include breakpoint(md) {
     display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: #000;
-    opacity: 0.85;
-    padding: 20px 0;
-
-    &__container {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    &__logo {
-      display: flex;
-      height: 40px;
-    }
-
-    &__text {
-      margin-left: 20px;
-      font-weight: 700;
-      font-size: 24px;
-    }
-
-    &__iconContainer {
-      .css-74d805-MuiButtonBase-root-MuiButton-root {
-        background-color: #000;
-      }
-    }
-    &__popupContainer {
-      .css-1toxriw-MuiList-root-MuiMenu-list {
-        padding: 0;
-      }
-      background-color: #10141b;
-      color: #fff;
-      padding: 0;
-      justify-items: center;
-    }
-    &__menuContainer {
-      .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
-        width: 100vw;
-        max-width: 100vw;
-        background-color: #10141b;
-        margin-top: 20px;
-        margin-left: 16px;
-      }
-    }
+  }
+  @include breakpoint(lg) {
+    display: block;
   }
 }

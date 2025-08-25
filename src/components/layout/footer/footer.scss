@@ -1,3 +1,5 @@
+@import "./src/scss/breakpoint.scss";
+
 .footer {
   padding: 20px 0;
 
@@ -7,6 +9,14 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+
+    // Responsive font size
+    @include breakpoint(sm) {
+      font-size: 18px;
+    }
+    @include breakpoint(xs) {
+      font-size: 16px;
+    }
   }
 
   &__links {
@@ -14,6 +24,13 @@
     gap: 40px;
     justify-content: center;
     margin-bottom: 16px;
+
+    // Responsive layout
+    @include breakpoint(xs) {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 20px;
+    }
   }
 
   &__link-item {
@@ -29,25 +46,13 @@
   &__copyright {
     font-size: 18px;
     margin-top: 16px;
-  }
-}
 
-@media (min-width: 481px) and (max-width: 992px) {
-  .footer {
-    &__container {
-      font-size: 18px;
-    }
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .footer {
-    &__container {
+    // Responsive font size
+    @include breakpoint(sm) {
       font-size: 16px;
     }
-    &__links {
-      display: grid;
-      grid-template-columns: auto auto;
+    @include breakpoint(xs) {
+      font-size: 14px;
     }
   }
 }

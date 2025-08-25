@@ -65,17 +65,18 @@
 
 .movie-card {
   overflow: hidden;
+  border-radius: 12px;
   @include breakpoint(xs) {
-    height: 42vh;
+    height: 32vh;
   }
   @include breakpoint(sm) {
-    height: 42vh;
+    height: 33vh;
   }
   @include breakpoint(md) {
-    height: 42vh;
+    height: 33vh;
   }
   @include breakpoint(lg) {
-    height: 42vh;
+    height: 33vh;
   }
 
   &__img {
@@ -129,6 +130,18 @@
 
   &__name {
     font-weight: 700;
+    @include breakpoint(xs) {
+      text-align: center;
+    }
+    @include breakpoint(sm) {
+      text-align: center;
+    }
+    @include breakpoint(md) {
+      text-align: center;
+    }
+    @include breakpoint(lg) {
+      text-align: center;
+    }
   }
 }
 
