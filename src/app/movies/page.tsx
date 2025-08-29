@@ -53,27 +53,29 @@ const Movie = () => {
       name: "MANG MẸ ĐI BỎ",
     },
   ];
+
   return (
-    <div className="mt-50">
+    <div className="movie-page">
       <Container>
-        <h1 className="">Phim đang chiếu</h1>
-        <Grid container spacing={2}>
+        <div className="movie-page__title">
+          <div className="movie-page__title-dot"></div>
+          <h1>Phim đang chiếu</h1>
+        </div>
+        <Grid container spacing={3}>
           {data.map((item, index) => {
             return (
-              <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={index}>
-                <div className="overflow-hidden">
-                  <a href={item.link}>
-                    <img
-                      src={item.img}
-                      alt=""
-                      className="transition-transform duration-300 hover:scale-105 w-full h-[264px] "
-                    />
-                    <p className="flex flex-wrap  my-2 text-sm text-gray-400 gap-x-5">
-                      <span>{item.genre}</span>
-                      <span>{item.date}</span>
-                    </p>
-                    <h2 className="font-bold">{item.name}</h2>
+              <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6 }} key={index}>
+                <div className="movie-card">
+                  <a href={item.link} className="movie-card__image">
+                    <img src={item.img} alt={item.name} />
                   </a>
+                  <div className="movie-card__content">
+                    <div className="movie-card__info">
+                      <span className="movie-card__genre">{item.genre}</span>
+                      <span className="movie-card__date">{item.date}</span>
+                    </div>
+                    <h2 className="movie-card__name">{item.name}</h2>
+                  </div>
                 </div>
               </Grid>
             );
