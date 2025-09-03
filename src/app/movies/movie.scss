@@ -1,3 +1,5 @@
+@import "./src/scss//breakpoint.scss";
+@import "./src/scss//variable.scss";
 .movie-page {
   margin-top: 100px;
 
@@ -15,8 +17,22 @@
     width: 1rem;
     height: 1rem;
     border-radius: 9999px;
-    background-color: #ffd700;
+    background-color: $color-yellow;
   }
+}
+
+.tab-container {
+  justify-self: center;
+  margin-bottom: 30px;
+  // border: 1px solid green;
+}
+.name-tab {
+  color: $s-color-black !important;
+  background-color: $color-yellow !important;
+  border-radius: 10px !important;
+  // border: 1px solid red !important;
+  margin-right: 20px !important;
+  font-weight: bolder !important;
 }
 
 .movie-card {
@@ -35,7 +51,7 @@
 
     img {
       width: 100%;
-      height: 200px;
+      height: 328px;
       object-fit: cover;
       border-radius: 8px;
       transition: transform 0.3s ease-in-out;
@@ -58,12 +74,27 @@
     flex-direction: column;
     gap: 8px;
     margin-bottom: 12px;
+    margin-top: -18px;
   }
 
-  &__genre {
+  &__type {
+    border: 1px solid #6c757d;
+    width: 40px;
+    padding: 3px 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #6c757d;
+    border-radius: 5px;
+    margin-left: 270px;
+    margin-top: -19px;
+  }
+
+  &__genre-time {
+    display: flex;
     font-size: 0.875rem;
     color: #6c757d;
     font-weight: 500;
+    gap: 20px;
   }
 
   &__date {
@@ -72,8 +103,24 @@
 
   &__name {
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 0.85rem;
 
     margin: 0;
+  }
+  &__nation {
+    font-size: 0.875rem;
+  }
+  &__age-rating {
+    color: $color-yellow;
+  }
+
+  &__showtime {
+    width: 50px;
+    padding: 5px 8px !important;
+    border: 1px solid #e5e7eb !important;
+    background-color: #000 !important;
+    border-radius: 8px !important;
+    margin-right: 10px !important;
+    margin-top: 8px !important;
   }
 }
