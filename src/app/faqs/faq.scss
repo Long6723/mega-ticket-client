@@ -1,0 +1,55 @@
+@import "./src/scss//breakpoint.scss";
+@import "./src/scss//variable.scss";
+
+.page {
+  background-color: #000;
+  color: #fff;
+
+  &__container {
+    width: 100%;
+    background-color: #10141b;
+    padding-bottom: 5rem;
+    padding-top: 70px;
+  }
+
+  &__title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.faq__container {
+  display: grid;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.faq__item {
+  width: 700px;
+}
+
+.button {
+  background-color: rgb(37 42 49) !important;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 0 !important;
+  justify-content: left !important;
+  width: 100%;
+  text-align: left;
+}
+
+.faq__answer {
+  background-color: rgb(25 30 37);
+  padding: 1.5rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}

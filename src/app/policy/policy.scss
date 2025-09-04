@@ -1,0 +1,62 @@
+@import "./src/scss//breakpoint.scss";
+@import "./src/scss//variable.scss";
+.policy-page {
+  background-color: #10141b;
+  padding-top: 100px;
+
+  &__title {
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.tab-container {
+  justify-self: center;
+  margin-bottom: 30px;
+  // border: 1px solid green;
+}
+.name-tab {
+  color: $color-black !important;
+  background-color: $color-yellow !important;
+  border-radius: 30px !important;
+  // border: 1px solid red !important;
+  margin-left: 20px !important;
+  font-weight: bolder !important;
+}
+
+.policy-content {
+  line-height: 1.6;
+  padding-bottom: 60px;
+
+  h3 {
+    color: #fff;
+    margin-top: 28px;
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+
+  h4 {
+    color: #ddd;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  p {
+    margin-bottom: 16px;
+    color: #ccc;
+  }
+
+  ul {
+    margin-bottom: 20px;
+
+    li {
+      margin-bottom: 8px;
+      color: #ccc;
+    }
+  }
+}

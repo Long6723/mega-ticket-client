@@ -1,7 +1,8 @@
 @import "./src/scss//breakpoint.scss";
 @import "./src/scss//variable.scss";
 .movie-page {
-  margin-top: 100px;
+  background-color: #10141b;
+  padding-top: 100px;
 
   &__title {
     margin-bottom: 1.25rem;
@@ -27,7 +28,7 @@
   // border: 1px solid green;
 }
 .name-tab {
-  color: $s-color-black !important;
+  color: $color-black !important;
   background-color: $color-yellow !important;
   border-radius: 10px !important;
   // border: 1px solid red !important;
