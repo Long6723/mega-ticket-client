@@ -29,10 +29,10 @@ export default function Page() {
 
   return (
     <>
-      <MyButton>Đăng ký</MyButton>
+      <MyButton style={{ margin: "100px 0px 0px 50px" }}>Đăng ký</MyButton>
       <MyButton
         onClick={handleOpenModal}
-        style={{ margin: "0px 0px 0px 50px" }}
+        style={{ margin: "100px 0px 0px 50px" }}
       >
         Mở Modal
       </MyButton>
