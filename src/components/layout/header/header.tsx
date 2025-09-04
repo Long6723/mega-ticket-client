@@ -3,6 +3,7 @@ import MyButton from "@/components/ui/button";
 import "./header.scss";
 import { Container, Menu, MenuItem } from "@mui/material";
 import { useRef, useState } from "react";
+import AuthForms from "../form/authforms";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,35 +48,7 @@ const Header = () => {
               </ul>
             </div>
             <div className="header__buttons">
-              <MyButton
-                sx={{
-                  borderRadius: "20px",
-                  backgroundColor: "#FFD700",
-                  color: "black",
-                  fontWeight: "bold",
-                  "&:hover": {
-                    backgroundColor: "#FFC000",
-                  },
-                  marginRight: "35px",
-                }}
-              >
-                Đăng nhập
-              </MyButton>
-              <MyButton
-                variant="outlined"
-                sx={{
-                  borderRadius: "20px",
-                  borderColor: "white",
-                  color: "white",
-                  fontWeight: "bold",
-                  "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
-                    borderColor: "white",
-                  },
-                }}
-              >
-                Đăng ký
-              </MyButton>
+              <AuthForms />
             </div>
           </div>
         </Container>
@@ -132,35 +105,7 @@ const Header = () => {
                   </MenuItem>
                   <MenuItem>
                     <div className="header__buttons">
-                      <MyButton
-                        sx={{
-                          borderRadius: "20px",
-                          backgroundColor: "#FFD700",
-                          color: "black",
-                          fontWeight: "bold",
-                          "&:hover": {
-                            backgroundColor: "#FFC000",
-                          },
-                          marginRight: "35px",
-                        }}
-                      >
-                        Đăng nhập
-                      </MyButton>
-                      <MyButton
-                        variant="outlined"
-                        sx={{
-                          borderRadius: "20px",
-                          borderColor: "white",
-                          color: "white",
-                          fontWeight: "bold",
-                          "&:hover": {
-                            backgroundColor: "rgba(255, 255, 255, 0.1)",
-                            borderColor: "white",
-                          },
-                        }}
-                      >
-                        Đăng ký
-                      </MyButton>
+                      <AuthForms />
                     </div>
                   </MenuItem>
                 </div>

@@ -39,7 +39,9 @@ function a11yProps(index: number) {
 const Movie = () => {
   const data = [
     {
-      link: "/",
+      id: 1,
+      slug: "bang-dang-quai-kiet-2",
+      link: "/movies/bang-dang-quai-kiet-2",
       img: "https://chieuphimquocgia.com.vn/_next/image?url=http%3A%2F%2Fapiv2.chieuphimquocgia.com.vn%2FContent%2FImages%2F0018694_0.jpg&w=256&q=75",
       genre: "Hoạt hình",
       time: "102",
