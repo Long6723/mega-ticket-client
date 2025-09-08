@@ -1,0 +1,188 @@
+@import "./src/scss//breakpoint.scss";
+@import "./src/scss//variable.scss";
+.movie-detail-page-container {
+  background-color: #1a1d23;
+}
+.movie-detail-page {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 50vh;
+  position: relative;
+
+  // Thêm overlay để làm tối và mờ nền
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); // Màu đen với độ trong suốt 60%
+    backdrop-filter: blur(5px); // Hiệu ứng làm mờ
+    z-index: 1;
+  }
+}
+
+.movie-detail-content-container {
+  max-width: 1000px !important;
+}
+
+.movie-detail-content {
+  display: flex;
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  padding: 100px 0;
+  gap: 40px;
+
+  &__img {
+    flex: 0 0 250px;
+    max-width: 250px;
+
+    img {
+      width: 100%;
+      border-radius: 12px;
+    }
+  }
+
+  &__name {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    margin-right: 20px;
+  }
+
+  &__type {
+    border: 1px solid #fff;
+    display: inline-block;
+    padding: 6px 8px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  &__genre,
+  &__nation,
+  &__time {
+    margin-right: 20px;
+    font-size: 16px;
+  }
+
+  &__description {
+    display: block;
+    width: 90%;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  &__ageRating {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffcc00;
+  }
+
+  &__button {
+    margin-top: 24px !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    color: #ffcc00 !important;
+    padding: 5px 20px !important;
+    border: 1px solid #ffcc00 !important;
+    border-radius: 20px !important;
+    font-size: 16px !important;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.tab-section {
+  .tab-container {
+    justify-self: center;
+    // margin-bottom: 30px;
+
+    .name-tab {
+      color: $color-black !important;
+      background-color: $color-yellow !important;
+      border-radius: 10px !important;
+      margin-right: 20px !important;
+      font-weight: bolder !important;
+    }
+  }
+
+  .tab-panel {
+    display: flex;
+    background-color: #10141b;
+    padding: 20px;
+    justify-content: center;
+    .note {
+      font-size: 16px;
+      color: red;
+      margin-bottom: 20px;
+    }
+    .showtime-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      // max-width: 600px;
+
+      .button {
+        background-color: rgba(0, 0, 0, 0) !important;
+        color: #ffcc00 !important;
+        padding: 5px 70px !important;
+        border: 1px solid #ffcc00 !important;
+        border-radius: 20px !important;
+        font-size: 16px !important;
+        font-weight: 600;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .button {
+      background-color: rgba(0, 0, 0, 0) !important;
+      color: #ffcc00 !important;
+      padding: 5px 70px !important;
+      border: 1px solid #ffcc00 !important;
+      border-radius: 20px !important;
+      font-size: 16px !important;
+      font-weight: 600;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+.seat-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  .seat {
+    width: 32px;
+    height: 32px;
+    background: #333;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    margin: 0 2px;
+
+    &.selected {
+      background: #1976d2;
+      border: 2px solid #fff;
+    }
+  }
+}
