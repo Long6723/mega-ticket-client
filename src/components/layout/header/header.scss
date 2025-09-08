@@ -1,4 +1,5 @@
-@import "./src/scss/breakpoint.scss";
+@import "./src/scss//breakpoint.scss";
+@import "./src/scss//variable.scss";
 
 .header {
   position: fixed;
@@ -6,7 +7,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: #10141b;
+  background-color: $color-theme-content;
   opacity: 0.85;
   padding: 20px 0;
 
@@ -29,7 +30,7 @@
   &__nav-link {
     font-size: 20px;
     &:hover {
-      color: #ffd700;
+      color: $color-yellow;
     }
   }
 
@@ -39,7 +40,6 @@
     gap: 24px;
   }
 
-  // Ẩn header trên các màn hình nhỏ hơn xl
   @include breakpoint(xs) {
     display: none;
   }
@@ -57,7 +57,6 @@
 .header1 {
   display: none;
 
-  // Hiển thị header1 trên các màn hình nhỏ hơn xl
   @include breakpoint(xs) {
     display: block;
     position: fixed;
@@ -65,7 +64,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: #000;
+    background-color: $color-black;
     opacity: 0.85;
     padding: 20px 0;
 
@@ -89,7 +88,7 @@
 
     &__iconContainer {
       .css-74d805-MuiButtonBase-root-MuiButton-root {
-        background-color: #000;
+        background-color: $color-black;
       }
     }
 
@@ -97,8 +96,8 @@
       .css-1toxriw-MuiList-root-MuiMenu-list {
         padding: 0;
       }
-      background-color: #10141b;
-      color: #fff;
+      background-color: $color-theme-content;
+      color: $color-white;
       padding: 0;
       justify-items: center;
     }
@@ -106,7 +105,7 @@
       .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
         width: 100vw;
         max-width: 100vw;
-        background-color: #10141b;
+        background-color: $color-theme-content;
         margin-top: 20px;
         margin-left: 16px;
       }
@@ -120,7 +119,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: #000;
+    background-color: $color-black;
     opacity: 0.85;
     padding: 20px 0;
 
@@ -144,7 +143,7 @@
 
     &__iconContainer {
       .css-74d805-MuiButtonBase-root-MuiButton-root {
-        background-color: #000;
+        background-color: $color-black;
       }
     }
 
@@ -152,8 +151,8 @@
       .css-1toxriw-MuiList-root-MuiMenu-list {
         padding: 0;
       }
-      background-color: #10141b;
-      color: #fff;
+      background-color: $color-theme-content;
+      color: $color-white;
       padding: 0;
       justify-items: center;
     }
@@ -161,7 +160,7 @@
       .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
         width: 100vw;
         max-width: 100vw;
-        background-color: #10141b;
+        background-color: $color-theme-content;
         margin-top: 20px;
         margin-left: 16px;
       }
@@ -175,7 +174,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: #000;
+    background-color: $color-black;
     opacity: 0.85;
     padding: 20px 0;
 
@@ -199,7 +198,7 @@
 
     &__iconContainer {
       .css-74d805-MuiButtonBase-root-MuiButton-root {
-        background-color: #000;
+        background-color: $color-black;
       }
     }
 
@@ -207,8 +206,8 @@
       .css-1toxriw-MuiList-root-MuiMenu-list {
         padding: 0;
       }
-      background-color: #10141b;
-      color: #fff;
+      background-color: $color-theme-content;
+      color: $color-white;
       padding: 0;
       justify-items: center;
     }
@@ -216,7 +215,7 @@
       .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
         width: 100vw;
         max-width: 100vw;
-        background-color: #10141b;
+        background-color: $color-theme-content;
         margin-top: 20px;
         margin-left: 16px;
       }
@@ -230,7 +229,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: #000;
+    background-color: $color-black;
     opacity: 0.85;
     padding: 20px 0;
 
@@ -254,7 +253,7 @@
 
     &__iconContainer {
       .css-74d805-MuiButtonBase-root-MuiButton-root {
-        background-color: #000;
+        background-color: $color-black;
       }
     }
 
@@ -262,8 +261,8 @@
       .css-1toxriw-MuiList-root-MuiMenu-list {
         padding: 0;
       }
-      background-color: #10141b;
-      color: #fff;
+      background-color: $color-theme-content;
+      color: $color-white;
       padding: 0;
       justify-items: center;
     }
@@ -271,7 +270,7 @@
       .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
         width: 100vw;
         max-width: 100vw;
-        background-color: #10141b;
+        background-color: $color-theme-content;
         margin-top: 20px;
         margin-left: 16px;
       }

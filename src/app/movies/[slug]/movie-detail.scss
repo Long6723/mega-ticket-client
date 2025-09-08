@@ -1,7 +1,7 @@
 @import "./src/scss//breakpoint.scss";
 @import "./src/scss//variable.scss";
 .movie-detail-page-container {
-  background-color: #1a1d23;
+  background-color: $color-theme-movie-detail-container;
 }
 .movie-detail-page {
   background-size: cover;
@@ -18,7 +18,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6); // Màu đen với độ trong suốt 60%
+    background: $color-black-60; // Màu đen với độ trong suốt 60%
     backdrop-filter: blur(5px); // Hiệu ứng làm mờ
     z-index: 1;
   }
@@ -32,7 +32,7 @@
   display: flex;
   position: relative;
   z-index: 2;
-  color: #fff;
+  color: $color-white;
   padding: 100px 0;
   gap: 40px;
 
@@ -54,14 +54,14 @@
   }
 
   &__type {
-    border: 1px solid #fff;
+    border: 1px solid $color-white;
     display: inline-block;
     padding: 6px 8px;
     border-radius: 8px;
     margin-bottom: 16px;
     font-size: 14px;
     font-weight: 500;
-    color: #fff;
+    color: $color-white;
   }
 
   &__genre,
@@ -82,15 +82,15 @@
     margin-top: 16px;
     font-size: 16px;
     font-weight: 600;
-    color: #ffcc00;
+    color: $color-yellow;
   }
 
   &__button {
     margin-top: 24px !important;
     background-color: rgba(0, 0, 0, 0) !important;
-    color: #ffcc00 !important;
+    color: $color-yellow !important;
     padding: 5px 20px !important;
-    border: 1px solid #ffcc00 !important;
+    border: 1px solid $color-yellow !important;
     border-radius: 20px !important;
     font-size: 16px !important;
 
@@ -121,7 +121,7 @@
     justify-content: center;
     .note {
       font-size: 16px;
-      color: red;
+      color: $color-red;
       margin-bottom: 20px;
     }
     .showtime-buttons {
@@ -132,9 +132,9 @@
 
       .button {
         background-color: rgba(0, 0, 0, 0) !important;
-        color: #ffcc00 !important;
+        color: $color-yellow !important;
         padding: 5px 70px !important;
-        border: 1px solid #ffcc00 !important;
+        border: 1px solid $color-yellow !important;
         border-radius: 20px !important;
         font-size: 16px !important;
         font-weight: 600;
@@ -147,9 +147,9 @@
 
     .button {
       background-color: rgba(0, 0, 0, 0) !important;
-      color: #ffcc00 !important;
+      color: $color-yellow !important;
       padding: 5px 70px !important;
-      border: 1px solid #ffcc00 !important;
+      border: 1px solid $color-yellow !important;
       border-radius: 20px !important;
       font-size: 16px !important;
       font-weight: 600;
@@ -168,12 +168,12 @@
   .seat {
     width: 32px;
     height: 32px;
-    background: #333;
+    background: $color-seat-normal;
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: $color-white;
     font-weight: 500;
     font-size: 14px;
     cursor: pointer;
@@ -181,8 +181,8 @@
     margin: 0 2px;
 
     &.selected {
-      background: #1976d2;
-      border: 2px solid #fff;
+      background: $color-seat-selected;
+      border: 2px solid $color-white;
     }
   }
 }

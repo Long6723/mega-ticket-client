@@ -1,7 +1,7 @@
 @import "./src/scss//breakpoint.scss";
 @import "./src/scss//variable.scss";
 .movie-page {
-  background-color: #10141b;
+  background-color: $color-theme-content;
   padding-top: 100px;
 
   &__title {
@@ -43,7 +43,7 @@
   border-radius: 12px;
   height: 350px;
 
-  border: 1px solid #e5e7eb;
+  border: 1px solid $color-border-card;
   transition:
     transform 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out;
@@ -80,12 +80,12 @@
   }
 
   &__type {
-    border: 1px solid #6c757d;
+    border: 1px solid $color-border-card;
     width: 40px;
     padding: 3px 8px;
     font-size: 1rem;
     font-weight: bold;
-    color: #6c757d;
+    color: $color-white;
     border-radius: 5px;
     margin-left: 270px;
     margin-top: -19px;
@@ -94,7 +94,7 @@
   &__genre-time {
     display: flex;
     font-size: 0.875rem;
-    color: #6c757d;
+    color: $color-info;
     font-weight: 500;
     gap: 20px;
   }
@@ -120,8 +120,8 @@
   &__showtime {
     width: 50px;
     padding: 5px 8px !important;
-    border: 1px solid #e5e7eb !important;
-    background-color: #000 !important;
+    border: 1px solid $color-white !important;
+    background-color: $color-black !important;
     border-radius: 8px !important;
     margin-right: 10px !important;
     margin-top: 8px !important;

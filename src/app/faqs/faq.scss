@@ -2,12 +2,12 @@
 @import "./src/scss//variable.scss";
 
 .page {
-  background-color: #000;
-  color: #fff;
+  background-color: $color-black;
+  color: $color-white;
 
   &__container {
     width: 100%;
-    background-color: #10141b;
+    background-color: $color-theme-content;
     padding-bottom: 5rem;
     padding-top: 70px;
   }
@@ -35,8 +35,8 @@
 }
 
 .button {
-  background-color: rgb(37 42 49) !important;
-  color: #fff;
+  background-color: $color-button-question !important;
+  color: $color-white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -48,7 +48,7 @@
 }
 
 .faq__answer {
-  background-color: rgb(25 30 37);
+  background-color: $color-button-answer;
   padding: 1.5rem;
   border-radius: 5px;
   margin-bottom: 1rem;

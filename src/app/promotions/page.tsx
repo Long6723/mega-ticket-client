@@ -61,13 +61,17 @@ export default function PromotionPage() {
           <Grid container spacing={2}>
             {data.map((item, index) => (
               <Grid size={{ xs: 6, sm: 4, md: 3, lg: 3 }} key={index}>
-                <div className="movie-card">
+                <div className="promotion-card">
                   <a href={item.link}>
-                    <img src={item.img} alt="" className="movie-card__img" />
-                    <p className="movie-card__info">
+                    <img
+                      src={item.img}
+                      alt=""
+                      className="promotion-card__img"
+                    />
+                    <p className="promotion-card__info">
                       <span>{item.date}</span>
                     </p>
-                    <h2 className="movie-card__name">{item.name}</h2>
+                    <h2 className="promotion-card__name">{item.name}</h2>
                   </a>
                 </div>
               </Grid>

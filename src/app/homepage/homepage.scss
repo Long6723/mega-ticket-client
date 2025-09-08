@@ -2,13 +2,13 @@
 @import "./src/scss//variable.scss";
 
 .page {
-  background-color: #000;
-  color: #fff;
+  background-color: $color-black;
+  color: $color-white;
 
   &__container {
     width: 100%;
-    background-color: #10141b;
-    padding-bottom: 5rem; // pb-20
+    background-color: $color-theme-content;
+    padding-bottom: 5rem;
     @include breakpoint(xs) {
       display: none;
     }
@@ -60,7 +60,7 @@
     width: 1rem;
     height: 1rem;
     border-radius: 9999px;
-    background-color: #ffd700;
+    background-color: $color-yellow;
   }
 }
 
@@ -112,7 +112,7 @@
     flex-wrap: wrap;
     margin: 0.5rem 0;
     font-size: 0.875rem;
-    color: #9ca3af;
+    color: $color-info;
     column-gap: 1.25rem;
 
     @include breakpoint(xs) {

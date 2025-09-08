@@ -2,12 +2,12 @@
 @import "./src/scss//variable.scss";
 
 .page {
-  background-color: #000;
-  color: #fff;
+  background-color: $color-black;
+  color: $color-white;
 
   &__container {
     width: 100%;
-    background-color: #10141b;
+    background-color: $color-theme-content;
     padding-bottom: 5rem;
     padding-top: 70px;
   }
@@ -23,10 +23,10 @@
   }
 }
 
-.movie-card {
+.promotion-card {
   overflow: hidden;
   border-radius: 12px;
-  border: 1px solid #1f2937;
+  border: 1px solid $color-border-card;
 
   &__img {
     width: 100%;
@@ -44,7 +44,7 @@
     flex-wrap: wrap;
     margin: 0.5rem 0;
     font-size: 0.875rem;
-    color: #9ca3af;
+    color: $color-info;
     column-gap: 1.25rem;
     padding-left: 15px;
   }
