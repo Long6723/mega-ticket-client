@@ -18,6 +18,7 @@ export default defineConfig([
       "no-empty-pattern": "warn",
       "no-undef": "warn",
       "@typescript-eslint/no-empty-object-type": "warn",
+      "react/no-unescaped-entities": "off",
     },
   },
 ]);

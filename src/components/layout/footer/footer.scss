@@ -1,4 +1,5 @@
-@import "./src/scss/breakpoint.scss";
+@import "./src/scss//breakpoint.scss";
+@import "./src/scss//variable.scss";
 
 .footer {
   padding: 20px 0;
@@ -10,7 +11,6 @@
     margin-right: auto;
     text-align: center;
 
-    // Responsive font size
     @include breakpoint(sm) {
       font-size: 18px;
     }
@@ -25,7 +25,6 @@
     justify-content: center;
     margin-bottom: 16px;
 
-    // Responsive layout
     @include breakpoint(xs) {
       display: grid;
       grid-template-columns: auto auto;
@@ -39,7 +38,7 @@
 
   &__link {
     &:hover {
-      color: #ffd700;
+      color: $color-yellow;
     }
   }
 
@@ -47,7 +46,6 @@
     font-size: 18px;
     margin-top: 16px;
 
-    // Responsive font size
     @include breakpoint(sm) {
       font-size: 16px;
     }
