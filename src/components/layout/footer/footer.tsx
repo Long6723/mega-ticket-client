@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "./footer.scss";
 
 const Footer = () => {
@@ -6,24 +7,24 @@ const Footer = () => {
       <div className="footer__container">
         <ul className="footer__links">
           <li className="footer__link-item">
-            <a href="/policy" className="footer__link">
+            <Link href="/policy" className="footer__link">
               Chính sách
-            </a>
+            </Link>
           </li>
           <li className="footer__link-item">
-            <a href="/movies" className="footer__link">
+            <Link href="/movies" className="footer__link">
               Lịch chiếu
-            </a>
+            </Link>
           </li>
           <li className="footer__link-item">
-            <a href="/promotions" className="footer__link">
+            <Link href="/promotions" className="footer__link">
               Khuyến mãi
-            </a>
+            </Link>
           </li>
           <li className="footer__link-item">
-            <a href="/faqs" className="footer__link">
+            <Link href="/faqs" className="footer__link">
               Hỏi đáp
-            </a>
+            </Link>
           </li>
         </ul>
         <p className="footer__copyright">

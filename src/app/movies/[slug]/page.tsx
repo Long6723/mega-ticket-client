@@ -7,6 +7,7 @@ import * as React from "react";
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import { ROOM1, ROOM2 } from "@/constants/seat.cont";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -100,22 +101,20 @@ interface MovieDetailPageProps {
   };
 }
 
-const room = [
-  ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8"],
-  ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8"],
-  ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8"],
-  ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"],
-];
+const bookedSeats = ["C3", "C4", "C5", "C6"];
 
-const showtimes = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"];
+const showtimes: Record<string, string[]> = {
+  "29/08/2025": ["10.00", "11.00", "12.00", "13.00", "14.00"],
+  "30/08/2025": ["10.00", "11.00", "12.00", "13.00", "14.00", "15.00"],
+  "31/08/2025": ["10.00", "11.00", "12.00", "13.00", "14.00", "17.00"],
+};
 
 export default function MovieDetailPage({ params }: MovieDetailPageProps) {
   const { slug } = params;
   const movie = data.find((m) => m.slug === slug);
 
-  const [selectedShowtime, setSelectedShowtime] = React.useState<string | null>(
-    null,
-  );
+  const [selectedShowtime, setSelectedShowtime] = React.useState<string[]>([]);
+  const [selectedTime, setSelectedTime] = React.useState<string | null>(null);
   const [selectedSeats, setSelectedSeats] = React.useState<string[]>([]);
 
   if (!movie) {
@@ -133,10 +132,14 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
   };
 
   const handleSelectSeat = (seat: string) => {
+    if (bookedSeats.includes(seat)) {
+      return;
+    }
     setSelectedSeats((prev) =>
       prev.includes(seat) ? prev.filter((s) => s !== seat) : [...prev, seat],
     );
   };
+
   return (
     <div className="movie-detail-page-container">
       <div className="movie-detail-page" style={pageStyle}>
@@ -174,9 +177,11 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
               <div className="movie-detail-content__ageRating">
                 Kiểm duyệt: {movie.ageRating}
               </div>
-              <MyButton className="movie-detail-content__button">
-                Xem trailer
-              </MyButton>
+              <a href="https://youtu.be/dABxcj2xGys">
+                <MyButton className="movie-detail-content__button">
+                  Xem trailer
+                </MyButton>
+              </a>
             </div>
           </div>
         </Container>
@@ -190,9 +195,19 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
           className="tab-container"
           TabIndicatorProps={{ style: { display: "none" } }}
         >
-          <Tab label="29/08/2025" {...a11yProps(0)} className="name-tab" />
-          <Tab label="30/08/2025" {...a11yProps(1)} className="name-tab" />
-          <Tab label="31/08/2025" {...a11yProps(2)} className="name-tab" />
+          {Object.entries(showtimes).map((time, index) => (
+            <Tab
+              key={index}
+              label={time[0]}
+              {...a11yProps(index)}
+              className="name-tab"
+              onClick={() => {
+                setSelectedShowtime(time[1]);
+                setSelectedTime(null);
+                setSelectedSeats([]);
+              }}
+            />
+          ))}
         </Tabs>
         <div className="tab-panel">
           <CustomTabPanel value={value} index={0}>
@@ -202,34 +217,59 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
               23h.
             </p>
             <div className="showtime-buttons">
-              {showtimes.map((time) => (
+              {selectedShowtime?.map((time, index) => (
                 <MyButton
                   className="button"
-                  key={time}
-                  onClick={() => setSelectedShowtime(time)}
+                  key={index}
+                  onClick={() => {
+                    setSelectedTime(time); // chọn 1 giờ, lưu lại thành mảng chứa 1 phần tử
+                    setSelectedSeats([]); // reset ghế
+                  }}
                 >
                   {time}
                 </MyButton>
               ))}
             </div>
-            {selectedShowtime && (
+            {selectedTime && (
               <>
-                <div className="selected-showtime">
-                  Suất chiếu đã chọn: {selectedShowtime}
+                <div className="selected-time">
+                  Suất chiếu đã chọn: {selectedTime}
                 </div>
-                {room.map((row, rowIndex) => (
+                {ROOM2.map((row, rowIndex) => (
                   <div className="seat-row" key={rowIndex}>
                     {row.map((seat) => (
                       <div
-                        key={seat}
-                        onClick={() => handleSelectSeat(seat)}
-                        className={`seat ${selectedSeats.includes(seat) ? "selected" : ""}`}
+                        key={seat.name}
+                        onClick={() => handleSelectSeat(seat.name)}
+                        className={`seat ${seat.type.toLowerCase()} ${bookedSeats.includes(seat.name) ? "booked" : ""}  ${selectedSeats.includes(seat.name) ? "selected" : ""} `}
                       >
-                        {seat}
+                        {seat.name}
                       </div>
                     ))}
                   </div>
                 ))}
+                <div className="category-seat-container">
+                  <div className="category-seat-booked">
+                    <div className="category-seat-dot"></div>
+                    <h1>Ghế đã đặt</h1>
+                  </div>
+                  <div className="category-seat-selected">
+                    <div className="category-seat-dot"></div>
+                    <h1>Ghế bạn chọn</h1>
+                  </div>
+                  <div className="category-seat-normal">
+                    <div className="category-seat-dot"></div>
+                    <h1>Ghế thường</h1>
+                  </div>
+                  <div className="category-seat-vip">
+                    <div className="category-seat-dot"></div>
+                    <h1>Ghế VIP</h1>
+                  </div>
+                  <div className="category-seat-double">
+                    <div className="category-seat-dot"></div>
+                    <h1>Ghế đôi</h1>
+                  </div>
+                </div>
               </>
             )}
           </CustomTabPanel>
@@ -240,30 +280,33 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
               23h.
             </p>
             <div className="showtime-buttons">
-              {showtimes.map((time) => (
+              {selectedShowtime?.map((time, index) => (
                 <MyButton
                   className="button"
-                  key={time}
-                  onClick={() => setSelectedShowtime(time)}
+                  key={index}
+                  onClick={() => {
+                    setSelectedTime(time); // chọn 1 giờ, lưu lại thành mảng chứa 1 phần tử
+                    setSelectedSeats([]); // reset ghế
+                  }}
                 >
                   {time}
                 </MyButton>
               ))}
             </div>
-            {selectedShowtime && (
+            {selectedTime && (
               <>
                 <div className="selected-showtime">
-                  Suất chiếu đã chọn: {selectedShowtime}
+                  Suất chiếu đã chọn: {selectedTime}
                 </div>
-                {room.map((row, rowIndex) => (
+                {ROOM1.map((row, rowIndex) => (
                   <div className="seat-row" key={rowIndex}>
                     {row.map((seat) => (
                       <div
-                        key={seat}
-                        onClick={() => handleSelectSeat(seat)}
-                        className={`seat ${selectedSeats.includes(seat) ? "selected" : ""}`}
+                        key={seat.name}
+                        onClick={() => handleSelectSeat(seat.name)}
+                        className={`seat ${seat.type.toLowerCase()} ${bookedSeats.includes(seat.name) ? "booked" : ""}  ${selectedSeats.includes(seat.name) ? "selected" : ""} `}
                       >
-                        {seat}
+                        {seat.name}
                       </div>
                     ))}
                   </div>
