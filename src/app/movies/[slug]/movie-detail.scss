@@ -161,13 +161,17 @@
   }
 }
 
+.selected-time {
+  margin-top: 20px;
+}
+
 .seat-row {
   display: flex;
   justify-content: center;
   margin-bottom: 5px;
   .seat {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
     background: $color-seat-normal;
     border-radius: 6px;
     display: flex;
@@ -180,9 +184,78 @@
     border: none;
     margin: 0 2px;
 
+    &.vip {
+      background: $color-seat-vip;
+    }
+    &.double {
+      background: $color-seat-double;
+    }
+    &.booked {
+      background-image: url("https://chieuphimquocgia.com.vn/_next/image?url=http%3A%2F%2Fapiv2.chieuphimquocgia.com.vn%2FContent%2FImages%2F0019018_0.jpg&w=3840&q=75");
+      background-size: 42px 42px;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: transparent;
+    }
     &.selected {
       background: $color-seat-selected;
       border: 2px solid $color-white;
+    }
+  }
+}
+.category-seat-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+
+  .category-seat-dot {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    // background-color: $color-yellow;
+  }
+  .category-seat-booked {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    .category-seat-dot {
+      background-image: url("https://chieuphimquocgia.com.vn/_next/image?url=http%3A%2F%2Fapiv2.chieuphimquocgia.com.vn%2FContent%2FImages%2F0019018_0.jpg&w=3840&q=75");
+      background-size: 42px 42px;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: transparent;
+    }
+  }
+  .category-seat-selected {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    .category-seat-dot {
+      background: $color-seat-selected;
+    }
+  }
+  .category-seat-normal {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    .category-seat-dot {
+      background: $color-seat-normal;
+    }
+  }
+  .category-seat-vip {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    .category-seat-dot {
+      background: $color-seat-vip;
+    }
+  }
+  .category-seat-double {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    .category-seat-dot {
+      background: $color-seat-double;
     }
   }
 }

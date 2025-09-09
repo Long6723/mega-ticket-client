@@ -4,6 +4,7 @@ import "./header.scss";
 import { Container, Menu, MenuItem } from "@mui/material";
 import { useRef, useState } from "react";
 import AuthForms from "../form/authforms";
+import Link from "next/link";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,34 +17,34 @@ const Header = () => {
       <header className="header">
         <Container>
           <div className="header__container">
-            <a href="/">
+            <Link href="/">
               <img
                 src="https://chieuphimquocgia.com.vn/images/logo-text-new.svg"
                 alt="Ticket Hub"
                 className="header__logo"
               />
-            </a>
+            </Link>
             <div>
               <ul className="header__nav-list">
                 <li>
-                  <a href="/" className="header__nav-link">
+                  <Link href="/" className="header__nav-link">
                     Trang chủ
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/movies" className="header__nav-link">
+                  <Link href="/movies" className="header__nav-link">
                     Lịch chiếu
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/promotions" className="header__nav-link">
+                  <Link href="/promotions" className="header__nav-link">
                     Khuyến mãi
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/faqs" className="header__nav-link">
+                  <Link href="/faqs" className="header__nav-link">
                     Hỏi đáp
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -56,13 +57,13 @@ const Header = () => {
       <header className="header1">
         <Container>
           <div className="header1__container">
-            <a href="/" className="header1__logo">
+            <Link href="/" className="header1__logo">
               <img
                 src="https://chieuphimquocgia.com.vn/images/logo-text-new.svg"
                 alt="Ticket Hub"
               />
               <h1 className="header1__text">Ticket Hub</h1>
-            </a>
+            </Link>
 
             <div className="header1__iconContainer">
               <MyButton ref={menuButtonRef} onClick={handleOpenMenu}>
@@ -84,24 +85,24 @@ const Header = () => {
               >
                 <div className="header1__popupContainer">
                   <MenuItem>
-                    <a href="/" className="header__nav-link">
+                    <Link href="/" className="header__nav-link">
                       Trang chủ
-                    </a>
+                    </Link>
                   </MenuItem>
                   <MenuItem>
-                    <a href="/movies" className="header__nav-link">
+                    <Link href="/movies" className="header__nav-link">
                       Lịch chiếu
-                    </a>
+                    </Link>
                   </MenuItem>
                   <MenuItem>
-                    <a href="/promotions" className="header__nav-link">
+                    <Link href="/promotions" className="header__nav-link">
                       Khuyến mãi
-                    </a>
+                    </Link>
                   </MenuItem>
                   <MenuItem>
-                    <a href="/faqs" className="header__nav-link">
+                    <Link href="/faqs" className="header__nav-link">
                       Hỏi đáp
-                    </a>
+                    </Link>
                   </MenuItem>
                   <MenuItem>
                     <div className="header__buttons">
