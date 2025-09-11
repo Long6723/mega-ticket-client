@@ -109,13 +109,24 @@ const showtimes: Record<string, string[]> = {
   "31/08/2025": ["10.00", "11.00", "12.00", "13.00", "14.00", "17.00"],
 };
 
+interface SeatDetail {
+  name: string;
+  type: string;
+}
+
+const seatPrices: Record<string, number> = {
+  NORMAL: 70000,
+  VIP: 100000,
+  DOUBLE: 140000,
+};
+
 export default function MovieDetailPage({ params }: MovieDetailPageProps) {
   const { slug } = params;
   const movie = data.find((m) => m.slug === slug);
 
   const [selectedShowtime, setSelectedShowtime] = React.useState<string[]>([]);
   const [selectedTime, setSelectedTime] = React.useState<string | null>(null);
-  const [selectedSeats, setSelectedSeats] = React.useState<string[]>([]);
+  const [selectedSeats, setSelectedSeats] = React.useState<SeatDetail[]>([]);
 
   if (!movie) {
     notFound();
@@ -131,14 +142,40 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
     setValue(newValue);
   };
 
-  const handleSelectSeat = (seat: string) => {
-    if (bookedSeats.includes(seat)) {
+  const handleSelectSeat = (seat: SeatDetail) => {
+    if (bookedSeats.includes(seat.name)) {
       return;
     }
-    setSelectedSeats((prev) =>
-      prev.includes(seat) ? prev.filter((s) => s !== seat) : [...prev, seat],
-    );
+    if (emptySeat(seat.name)) {
+      setSelectedSeats((prev) => [...prev, seat]);
+    } else {
+      setSelectedSeats((prev) => prev.filter((s) => s.name !== seat.name));
+    }
   };
+  const emptySeat = (name: string) => {
+    for (const element of selectedSeats) {
+      if (element.name === name) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const totalPrice = React.useMemo(() => {
+    let total = 0;
+    for (const element of selectedSeats) {
+      if (element.type === "VIP") {
+        total += seatPrices.VIP;
+      }
+      if (element.type === "NORMAL") {
+        total += seatPrices.NORMAL;
+      }
+      if (element.type === "DOUBLE") {
+        total += seatPrices.DOUBLE;
+      }
+    }
+    return total;
+  }, [selectedSeats]);
 
   return (
     <div className="movie-detail-page-container">
@@ -240,8 +277,8 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
                     {row.map((seat) => (
                       <div
                         key={seat.name}
-                        onClick={() => handleSelectSeat(seat.name)}
-                        className={`seat ${seat.type.toLowerCase()} ${bookedSeats.includes(seat.name) ? "booked" : ""}  ${selectedSeats.includes(seat.name) ? "selected" : ""} `}
+                        onClick={() => handleSelectSeat(seat)}
+                        className={`seat ${seat.type.toLowerCase()} ${bookedSeats.includes(seat.name) ? "booked" : ""}  ${selectedSeats.includes(seat) ? "selected" : ""} `}
                       >
                         {seat.name}
                       </div>
@@ -269,6 +306,18 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
                     <div className="category-seat-dot"></div>
                     <h1>Ghế đôi</h1>
                   </div>
+                </div>
+                <div className="info-seat-selected">
+                  <div>
+                    <p>
+                      Ghế đã chọn:
+                      {selectedSeats.map((seat) => seat.name).join(", ")}
+                    </p>
+                    <p>Tổng tiền: {totalPrice.toLocaleString("vi-VN")}đ</p>
+                  </div>
+                  <MyButton className="button-payment" href="/">
+                    Thanh toán
+                  </MyButton>
                 </div>
               </>
             )}
@@ -303,14 +352,48 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
                     {row.map((seat) => (
                       <div
                         key={seat.name}
-                        onClick={() => handleSelectSeat(seat.name)}
-                        className={`seat ${seat.type.toLowerCase()} ${bookedSeats.includes(seat.name) ? "booked" : ""}  ${selectedSeats.includes(seat.name) ? "selected" : ""} `}
+                        onClick={() => handleSelectSeat(seat)}
+                        className={`seat ${seat.type.toLowerCase()} ${bookedSeats.includes(seat.name) ? "booked" : ""}  ${selectedSeats.includes(seat) ? "selected" : ""} `}
                       >
                         {seat.name}
                       </div>
                     ))}
                   </div>
                 ))}
+                <div className="category-seat-container">
+                  <div className="category-seat-booked">
+                    <div className="category-seat-dot"></div>
+                    <h1>Ghế đã đặt</h1>
+                  </div>
+                  <div className="category-seat-selected">
+                    <div className="category-seat-dot"></div>
+                    <h1>Ghế bạn chọn</h1>
+                  </div>
+                  <div className="category-seat-normal">
+                    <div className="category-seat-dot"></div>
+                    <h1>Ghế thường</h1>
+                  </div>
+                  <div className="category-seat-vip">
+                    <div className="category-seat-dot"></div>
+                    <h1>Ghế VIP</h1>
+                  </div>
+                  <div className="category-seat-double">
+                    <div className="category-seat-dot"></div>
+                    <h1>Ghế đôi</h1>
+                  </div>
+                </div>
+                <div className="info-seat-selected">
+                  <div>
+                    <p>
+                      Ghế đã chọn:
+                      {selectedSeats.map((seat) => seat.name).join(", ")}
+                    </p>
+                    <p>Tổng tiền: {totalPrice.toLocaleString("vi-VN")}đ</p>
+                  </div>
+                  <MyButton className="button-payment" href="/">
+                    Thanh toán
+                  </MyButton>
+                </div>
               </>
             )}
           </CustomTabPanel>

@@ -1,6 +1,6 @@
 "use client";
 import Banner from "@/components/core/banner";
-import "./homepage.scss";
+import "./home-page.scss";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
