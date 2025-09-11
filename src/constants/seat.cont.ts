@@ -1,4 +1,4 @@
-const TYPE_SEAT = {
+export const TYPE_SEAT = {
   NORMAL: "NORMAL",
   VIP: "VIP",
   DOUBLE: "DOUBLE",
