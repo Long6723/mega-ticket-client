@@ -1,0 +1,139 @@
+@import "./src/scss/breakpoint.scss";
+@import "./src/scss/variable.scss";
+
+.payment-page {
+  background-color: $color-theme-content;
+  padding-top: 100px;
+  margin-bottom: 100px;
+
+  .MuiPaper-root.MuiTableContainer-root {
+    background-color: $color-button-question !important;
+    border-radius: 19.5px;
+    border: 1px solid $color-border-card;
+  }
+
+  .MuiTableCell-root {
+    color: $color-white !important;
+    border-bottom: 0;
+  }
+
+  .MuiContainer-root {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .css-1xtozoh-MuiTableRow-root {
+    border-bottom: 1px solid $color-border-card;
+  }
+
+  &__left {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__right {
+    width: 35%;
+
+    .button-pay {
+      background-color: $color-yellow !important;
+      color: $color-black !important;
+      padding: 5px 70px !important;
+      border: 1px solid $color-yellow !important;
+      border-radius: 20px !important;
+      font-size: 16px !important;
+      font-weight: 600;
+      width: 100% !important;
+      margin: 20px 0;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .button-back {
+      background-color: rgba(0, 0, 0, 0) !important;
+      color: $color-yellow !important;
+      padding: 5px 70px !important;
+      border: 1px solid $color-yellow !important;
+      border-radius: 20px !important;
+      font-size: 16px !important;
+      font-weight: 600;
+      width: 100% !important;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .note {
+      margin-top: 20px;
+      color: $color-red;
+      text-align: center;
+    }
+  }
+
+  &__box {
+    background-color: $color-button-question;
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  &__title {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  &__content {
+    .data {
+      font-weight: bold;
+    }
+    &--name {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .checkbox {
+      display: flex;
+      text-align: center;
+      border: 1px solid $color-border-card;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .payment {
+      display: flex;
+      justify-content: space-between;
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+  &__content2 {
+    display: flex;
+    font-size: 16px;
+    margin-bottom: 20px;
+
+    &--time {
+      //   border: 1px solid red;
+      width: 60%;
+    }
+    &--seat {
+      width: 40%;
+    }
+  }
+
+  &__content3 {
+    display: flex;
+    font-size: 16px;
+
+    &--type {
+      width: 60%;
+    }
+    &--room {
+      width: 40%;
+    }
+  }
+}

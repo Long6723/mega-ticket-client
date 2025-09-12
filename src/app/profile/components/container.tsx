@@ -128,14 +128,14 @@ export default function ProfileContainer() {
                 date: "2025-09-12",
                 name: "BĂNG ĐẢNG QUÁI KIỆT 2 - P ( Lồng Tiếng )",
                 "ticket-number": 2,
-                amount: "100,000 VND",
+                amount: "100.000 VND",
               },
               {
                 id: 2,
                 date: "2025-09-13",
                 name: "LÀM GIÀU VỚI MA 2: CUỘC CHIẾN HỘT XOÀN - T16",
                 "ticket-number": 1,
-                amount: "50,000 VND",
+                amount: "50.000 VND",
               },
             ]}
             className="table"
