@@ -1,14 +1,27 @@
 "use client";
 
-import { Container } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import "../profile.scss";
 import * as React from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import InfoForm from "./info-form";
+
+import MyButton from "@/components/ui/button";
+import ChangePasswordForm from "./change-password";
+import UpdateInfoForm from "./info-form";
+import MyTable from "@/components/ui/table";
+import Column from "@/components/ui/table";
 
 export default function ProfileContainer() {
+  const [changeOpen, setChangeOpen] = React.useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const initialTab = parseInt(searchParams.get("tab") || "0");
+  const [value, setValue] = React.useState(initialTab);
+
   interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
@@ -38,11 +51,14 @@ export default function ProfileContainer() {
     };
   }
 
-  const [value, setValue] = React.useState(0);
-
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("tab", newValue.toString());
+    router.push(`?${params.toString()}`, { scroll: false });
   };
+
   return (
     <div className="profile-page">
       <Container>
@@ -69,7 +85,93 @@ export default function ProfileContainer() {
           />
         </Tabs>
         <CustomTabPanel value={value} index={0}>
-          <InfoForm />
+          <UpdateInfoForm
+            open={changeOpen}
+            onClose={() => setChangeOpen(false)}
+          />
+          <MyButton
+            onClick={() => setChangeOpen(true)}
+            sx={{
+              borderRadius: "20px",
+              backgroundColor: "#10141b",
+              border: "1px solid #fff",
+              color: "#fff",
+              fontWeight: "bold",
+              fontSize: "16px",
+              textTransform: "none",
+              "&::first-letter": {
+                textTransform: "uppercase",
+              },
+              mt: -7.15,
+              mb: 10,
+              ml: 70,
+              "&:hover": {
+                backgroundColor: "#9ca3af",
+              },
+            }}
+          >
+            Đổi mật khẩu
+          </MyButton>
+          <ChangePasswordForm
+            open={changeOpen}
+            onClose={() => setChangeOpen(false)}
+          />
+        </CustomTabPanel>
+
+        <CustomTabPanel value={value} index={1}>
+          <MyTable
+            columns={[
+              { field: "date", headerName: "Ngày giao dịch" },
+              { field: "name", headerName: "Tên phim" },
+              { field: "ticket-number", headerName: "Số vé" },
+              { field: "amount", headerName: "Số tiền" },
+            ]}
+            rows={[
+              {
+                id: 1,
+                date: "2025-09-12",
+                name: "Ticket 1",
+                "ticket-number": 2,
+                amount: "100,000 VND",
+              },
+              {
+                id: 2,
+                date: "2025-09-13",
+                name: "Ticket 2",
+                "ticket-number": 1,
+                amount: "50,000 VND",
+              },
+            ]}
+            className="table"
+          />
+        </CustomTabPanel>
+
+        <CustomTabPanel value={value} index={2}>
+          <MyTable
+            columns={[
+              { field: "date", headerName: "Ngày giao dịch" },
+              { field: "type", headerName: "Loại giao dịch" },
+              { field: "name", headerName: "Tên giao dịch" },
+              { field: "points", headerName: "Số điểm" },
+            ]}
+            rows={[
+              {
+                id: 1,
+                date: "2025-09-12",
+                type: "Tích điểm",
+                name: "Giao dịch 1",
+                points: 10,
+              },
+              {
+                id: 2,
+                date: "2025-09-13",
+                type: "Sử dụng điểm",
+                name: "Giao dịch 2",
+                points: -5,
+              },
+            ]}
+            className="table"
+          />
         </CustomTabPanel>
       </Container>
     </div>
