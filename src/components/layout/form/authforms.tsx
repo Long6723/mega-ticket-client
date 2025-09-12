@@ -20,8 +20,14 @@ const AuthForms = () => {
           border: "1px solid #fff",
           color: "#fff",
           fontWeight: "bold",
+          fontSize: "16px",
+          padding: "6px 25px",
           "&:hover": {
             backgroundColor: "#9ca3af",
+          },
+          textTransform: "none",
+          "&::first-letter": {
+            textTransform: "uppercase",
           },
         }}
       >
@@ -35,8 +41,14 @@ const AuthForms = () => {
           backgroundColor: "#FFD700",
           color: "black",
           fontWeight: "bold",
+          fontSize: "16px",
+          padding: "6px 20px",
           "&:hover": {
             backgroundColor: "#FFC000",
+          },
+          textTransform: "none",
+          "&::first-letter": {
+            textTransform: "uppercase",
           },
         }}
       >

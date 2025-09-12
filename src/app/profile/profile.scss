@@ -4,6 +4,8 @@
 .profile-page {
   background-color: $color-theme-content;
   padding-top: 100px;
+  width: 900px;
+  margin: 0 auto 50px auto;
 
   &__title {
     margin-bottom: 2rem;
@@ -30,7 +32,55 @@
       font-weight: bolder !important;
     }
   }
+  .table {
+    .css-1orzuox-MuiTableCell-root {
+      color: $color-white !important;
+    }
+    .css-1dc80h3-MuiTableCell-root {
+      color: $color-white !important;
+    }
+    background-color: $color-theme-content;
+    border: 1px solid $color-border-card;
+    border-radius: 20px;
+  }
 }
 .info-user-container {
   display: flex;
+}
+
+.input-field {
+  background-color: $color-input-bg;
+  border-radius: 8px;
+
+  .MuiOutlinedInput-root {
+    color: $color-white;
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: $color-input-border;
+    }
+
+    &:hover .MuiOutlinedInput-notchedOutline {
+      border-color: $color-input-border-hover;
+    }
+
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: $color-white;
+    }
+  }
+
+  .MuiInputLabel-root {
+    color: $color-input-border;
+
+    &.Mui-focused {
+      color: $color-white;
+    }
+  }
+
+  .MuiFormHelperText-root {
+    color: rgba(255, 255, 255, 0.7);
+
+    &.Mui-error {
+      color: #f44336;
+    }
+  }
 }
