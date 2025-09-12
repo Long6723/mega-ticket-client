@@ -20,12 +20,19 @@
   // border: 1px solid green;
 }
 .name-tab {
-  color: $color-black !important;
-  background-color: $color-yellow !important;
+  color: $color-white !important;
+  // background-color: $color-yellow !important;
   border-radius: 30px !important;
-  // border: 1px solid red !important;
+  border: 1px solid $color-white !important;
   margin-left: 20px !important;
   font-weight: bolder !important;
+
+  &:hover {
+    background-color: $color-button-banner-hover !important;
+  }
+  &.Mui-selected {
+    background-color: $color-yellow-100 !important;
+  }
 }
 
 .policy-content {

@@ -25,12 +25,19 @@
     margin-bottom: 30px;
     // border: 1px solid green;
     .name-tab {
-      color: $color-black !important;
-      background-color: $color-yellow !important;
+      color: $color-white !important;
+      // background-color: $color-yellow !important;
       border-radius: 10px !important;
-      // border: 1px solid red !important;
+      border: 1px solid $color-white !important;
       margin-right: 20px !important;
       font-weight: bolder !important;
+
+      &:hover {
+        background-color: $color-button-banner-hover !important;
+      }
+      &.Mui-selected {
+        background-color: $color-yellow-100 !important;
+      }
     }
   }
 }
@@ -41,6 +48,7 @@
   overflow: hidden;
   border-radius: 12px;
   height: 350px;
+  // margin-top: 30px;
 
   border: 1px solid $color-border-card;
   transition:
@@ -124,5 +132,9 @@
     border-radius: 8px !important;
     margin-right: 10px !important;
     margin-top: 8px !important;
+
+    &:hover {
+      background-color: $color-button-banner-hover !important;
+    }
   }
 }

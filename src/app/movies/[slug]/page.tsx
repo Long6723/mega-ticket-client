@@ -8,6 +8,7 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { ROOM1, ROOM2 } from "@/constants/seat.cont";
+import Link from "next/link";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -315,9 +316,9 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
                     </p>
                     <p>Tổng tiền: {totalPrice.toLocaleString("vi-VN")}đ</p>
                   </div>
-                  <MyButton className="button-payment" href="/">
-                    Thanh toán
-                  </MyButton>
+                  <Link href="/payment">
+                    <MyButton className="button-payment">Thanh toán</MyButton>
+                  </Link>
                 </div>
               </>
             )}
@@ -390,9 +391,9 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
                     </p>
                     <p>Tổng tiền: {totalPrice.toLocaleString("vi-VN")}đ</p>
                   </div>
-                  <MyButton className="button-payment" href="/">
-                    Thanh toán
-                  </MyButton>
+                  <Link href="/payment">
+                    <MyButton className="button-payment">Thanh toán</MyButton>
+                  </Link>
                 </div>
               </>
             )}
