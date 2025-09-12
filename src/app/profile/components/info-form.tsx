@@ -7,7 +7,7 @@ import { Grid } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { TextField, Typography, Box } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 
 const updateSchema = yup.object({
   surname: yup.string().required("Họ tối thiểu 1 ký tự"),
@@ -20,20 +20,21 @@ const updateSchema = yup.object({
     )
     .required("Vui lòng nhập số điện thoại"),
   address: yup.string().required("Vui lòng nhập địa chỉ"),
-  email: yup
-    .string()
-    .email("Email không hợp lệ")
-    .required("Vui lòng nhập email"),
 });
 
 type UpdateFormData = yup.InferType<typeof updateSchema>;
 
-type UpdateFormProps = {
-  open: boolean;
-  onClose: () => void;
-};
+type UpdateFormProps = {};
 
-const UpdateInfoForm = ({ open, onClose }: UpdateFormProps) => {
+const UpdateInfoForm = ({}: UpdateFormProps) => {
+  const data = {
+    surname: "Lưu",
+    name: "Long",
+    phone: "0329039324",
+    address: "Thuận Thành - Bắc Ninh",
+    email: "long06072003@gmail.com",
+  };
+
   const {
     register,
     handleSubmit,
@@ -60,6 +61,7 @@ const UpdateInfoForm = ({ open, onClose }: UpdateFormProps) => {
             error={!!errors.surname}
             helperText={errors.surname?.message}
             className="input-field"
+            defaultValue={data.surname}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
@@ -73,6 +75,7 @@ const UpdateInfoForm = ({ open, onClose }: UpdateFormProps) => {
             error={!!errors.name}
             helperText={errors.name?.message}
             className="input-field"
+            defaultValue={data.name}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
@@ -86,6 +89,7 @@ const UpdateInfoForm = ({ open, onClose }: UpdateFormProps) => {
             error={!!errors.phone}
             helperText={errors.phone?.message}
             className="input-field"
+            defaultValue={data.phone}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
@@ -99,6 +103,7 @@ const UpdateInfoForm = ({ open, onClose }: UpdateFormProps) => {
             error={!!errors.address}
             helperText={errors.address?.message}
             className="input-field"
+            defaultValue={data.address}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
@@ -107,9 +112,7 @@ const UpdateInfoForm = ({ open, onClose }: UpdateFormProps) => {
           </Typography>
           <TextField
             fullWidth
-            {...register("email")}
-            error={!!errors.email}
-            helperText={errors.email?.message}
+            defaultValue={data.email}
             sx={{
               backgroundColor: "#020817",
               borderRadius: "8px",
@@ -124,7 +127,6 @@ const UpdateInfoForm = ({ open, onClose }: UpdateFormProps) => {
                 },
             }}
             disabled={true}
-            value={"Email"}
           />
         </Grid>
       </Grid>

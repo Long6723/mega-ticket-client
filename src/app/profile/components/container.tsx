@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Grid } from "@mui/material";
+import { Container } from "@mui/material";
 import "../profile.scss";
 import * as React from "react";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -12,7 +12,6 @@ import MyButton from "@/components/ui/button";
 import ChangePasswordForm from "./change-password";
 import UpdateInfoForm from "./info-form";
 import MyTable from "@/components/ui/table";
-import Column from "@/components/ui/table";
 
 export default function ProfileContainer() {
   const [changeOpen, setChangeOpen] = React.useState(false);
@@ -85,10 +84,7 @@ export default function ProfileContainer() {
           />
         </Tabs>
         <CustomTabPanel value={value} index={0}>
-          <UpdateInfoForm
-            open={changeOpen}
-            onClose={() => setChangeOpen(false)}
-          />
+          <UpdateInfoForm />
           <MyButton
             onClick={() => setChangeOpen(true)}
             sx={{
@@ -104,7 +100,7 @@ export default function ProfileContainer() {
               },
               mt: -7.15,
               mb: 10,
-              ml: 70,
+              ml: 80,
               "&:hover": {
                 backgroundColor: "#9ca3af",
               },
@@ -130,14 +126,14 @@ export default function ProfileContainer() {
               {
                 id: 1,
                 date: "2025-09-12",
-                name: "Ticket 1",
+                name: "BĂNG ĐẢNG QUÁI KIỆT 2 - P ( Lồng Tiếng )",
                 "ticket-number": 2,
                 amount: "100,000 VND",
               },
               {
                 id: 2,
                 date: "2025-09-13",
-                name: "Ticket 2",
+                name: "LÀM GIÀU VỚI MA 2: CUỘC CHIẾN HỘT XOÀN - T16",
                 "ticket-number": 1,
                 amount: "50,000 VND",
               },

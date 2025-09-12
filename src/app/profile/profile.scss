@@ -4,8 +4,13 @@
 .profile-page {
   background-color: $color-theme-content;
   padding-top: 100px;
-  width: 900px;
+  width: 1000px;
   margin: 0 auto 50px auto;
+  .css-y2ff7i-MuiPaper-root-MuiTableContainer-root {
+    border-radius: 19.5px;
+    border: 1px solid $color-border-card;
+    margin-bottom: 120px;
+  }
 
   &__title {
     margin-bottom: 2rem;
@@ -39,6 +44,7 @@
     .css-1dc80h3-MuiTableCell-root {
       color: $color-white !important;
     }
+
     background-color: $color-theme-content;
     border: 1px solid $color-border-card;
     border-radius: 20px;
