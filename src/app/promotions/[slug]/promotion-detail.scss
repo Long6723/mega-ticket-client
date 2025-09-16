@@ -1,0 +1,18 @@
+@import "./src/scss//breakpoint.scss";
+@import "./src/scss//variable.scss";
+
+.promotion-detail-page {
+  background-color: $color-theme-content;
+  color: $color-white;
+}
+
+.promotion-detail-content {
+  padding-top: 100px;
+  padding-bottom: 50px;
+
+  .promotion-detail-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+}

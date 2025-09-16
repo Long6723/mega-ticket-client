@@ -108,9 +108,9 @@
     .name-tab {
       color: $color-white !important;
       // background-color: $color-yellow !important;
-      border-radius: 10px !important;
-      border: 1px solid $color-white !important;
-      margin-right: 20px !important;
+      // border-radius: 10px !important;
+      // border: 1px solid $color-white !important;
+      // margin-right: 20px !important;
       font-weight: bolder !important;
 
       &:hover {
@@ -140,30 +140,19 @@
 
       .button {
         background-color: rgba(0, 0, 0, 0) !important;
-        color: $color-yellow !important;
+        color: $color-white !important;
         padding: 5px 70px !important;
-        border: 1px solid $color-yellow !important;
+        border: 1px solid $color-white !important;
         border-radius: 20px !important;
         font-size: 16px !important;
         font-weight: 600;
 
         &:hover {
-          transform: scale(1.05);
+          background-color: $color-button-banner-hover !important;
         }
-      }
-    }
-
-    .button {
-      background-color: rgba(0, 0, 0, 0) !important;
-      color: $color-yellow !important;
-      padding: 5px 70px !important;
-      border: 1px solid $color-yellow !important;
-      border-radius: 20px !important;
-      font-size: 16px !important;
-      font-weight: 600;
-
-      &:hover {
-        transform: scale(1.05);
+        &.Mui-selected {
+          background-color: $color-input-border-hover !important;
+        }
       }
     }
   }
@@ -171,6 +160,7 @@
 
 .selected-time {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .seat-row {
