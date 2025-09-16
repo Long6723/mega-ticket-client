@@ -1,6 +1,6 @@
 "use client";
 
-import { Container } from "@mui/material";
+import { Container, Snackbar, Alert } from "@mui/material";
 import * as React from "react";
 import "./payment.scss";
 import MyTable from "@/components/ui/table";
@@ -9,6 +9,22 @@ import Link from "next/link";
 import MyCheckbox from "@/components/ui/checkbox";
 
 export default function PaymentPage() {
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+
+  const handlePay = () => {
+    setOpenSnackbar(true);
+  };
+
+  const handleCloseSnackbar = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
   const infomovies = [
     {
       name: "BĂNG ĐẢNG QUÁI KIỆT 2 - P ( Lồng Tiếng )",
@@ -120,11 +136,14 @@ export default function PaymentPage() {
                 <p>70.000 đ</p>
               </div>
 
-              <MyButton className="button-pay">Thanh toán</MyButton>
+              <MyButton className="button-pay" onClick={handlePay}>
+                Thanh toán
+              </MyButton>
 
               <Link href="/movies/bang-dang-quai-kiet-2">
                 <MyButton className="button-back">Quay lại</MyButton>
               </Link>
+
               <p className="note">
                 Lưu ý: Không mua vé cho trẻ em dưới 13 tuổi đối với các suất
                 chiếu phim kết thúc sau 22h00 và không mua vé cho trẻ em dưới 16
@@ -134,6 +153,27 @@ export default function PaymentPage() {
           </div>
         </div>
       </Container>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        sx={{ mt: "80px" }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity="success"
+          sx={{
+            width: "100%",
+            borderRadius: "12px",
+            fontWeight: 600,
+            background: "linear-gradient(90deg,#4caf50,#66bb6a)",
+            color: "#fff",
+          }}
+        >
+          Thanh toán thành công!
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

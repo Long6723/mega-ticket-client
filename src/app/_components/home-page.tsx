@@ -90,14 +90,14 @@ export default function HomePage() {
           <Grid container spacing={2}>
             {data.map((item, index) => (
               <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={index}>
-                <div className="movie-card">
+                <div className="movie-cards">
                   <a href={item.link}>
-                    <img src={item.img} alt="" className="movie-card__img" />
-                    <p className="movie-card__info">
+                    <img src={item.img} alt="" className="movie-cards__img" />
+                    <p className="movie-cards__info">
                       <span>{item.genre}</span>
                       <span>{item.date}</span>
                     </p>
-                    <h2 className="movie-card__name">{item.name}</h2>
+                    <h2 className="movie-cards__name">{item.name}</h2>
                   </a>
                 </div>
               </Grid>
@@ -113,14 +113,14 @@ export default function HomePage() {
           <Grid container spacing={2}>
             {data.map((item, index) => (
               <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={index}>
-                <div className="movie-card">
+                <div className="movie-cards">
                   <a href={item.link}>
-                    <img src={item.img} alt="" className="movie-card__img" />
-                    <p className="movie-card__info">
+                    <img src={item.img} alt="" className="movie-cards__img" />
+                    <p className="movie-cards__info">
                       <span>{item.genre}</span>
                       <span>{item.date}</span>
                     </p>
-                    <h2 className="movie-card__name">{item.name}</h2>
+                    <h2 className="movie-cards__name">{item.name}</h2>
                   </a>
                 </div>
               </Grid>
@@ -161,14 +161,14 @@ export default function HomePage() {
           >
             {data.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="movie-card">
+                <div className="movie-cards">
                   <a href={item.link}>
-                    <img src={item.img} alt="" className="movie-card__img" />
-                    <p className="movie-card__info">
+                    <img src={item.img} alt="" className="movie-cards__img" />
+                    <p className="movie-cards__info">
                       <span>{item.genre}</span>
                       <span>{item.date}</span>
                     </p>
-                    <h2 className="movie-card__name">{item.name}</h2>
+                    <h2 className="movie-cards__name">{item.name}</h2>
                   </a>
                 </div>
               </SwiperSlide>
@@ -203,14 +203,14 @@ export default function HomePage() {
           >
             {data.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="movie-card">
+                <div className="movie-cards">
                   <a href={item.link}>
-                    <img src={item.img} alt="" className="movie-card__img" />
-                    <p className="movie-card__info">
+                    <img src={item.img} alt="" className="movie-cards__img" />
+                    <p className="movie-cards__info">
                       <span>{item.genre}</span>
                       <span>{item.date}</span>
                     </p>
-                    <h2 className="movie-card__name">{item.name}</h2>
+                    <h2 className="movie-cards__name">{item.name}</h2>
                   </a>
                 </div>
               </SwiperSlide>

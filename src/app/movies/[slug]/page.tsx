@@ -1,10 +1,10 @@
 "use client";
 import { Container } from "@mui/material";
-import { notFound } from "next/navigation";
+import { notFound, useSearchParams, useRouter } from "next/navigation";
 import "./movie-detail.scss";
 import MyButton from "@/components/ui/button";
 import * as React from "react";
-
+import { useEffect } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { ROOM1, ROOM2 } from "@/constants/seat.cont";
@@ -105,9 +105,9 @@ interface MovieDetailPageProps {
 const bookedSeats = ["C3", "C4", "C5", "C6"];
 
 const showtimes: Record<string, string[]> = {
-  "29/08/2025": ["10.00", "11.00", "12.00", "13.00", "14.00"],
-  "30/08/2025": ["10.00", "11.00", "12.00", "13.00", "14.00", "15.00"],
-  "31/08/2025": ["10.00", "11.00", "12.00", "13.00", "14.00", "17.00"],
+  "29/08/2025": ["10:00", "11:00", "12:00", "13:00", "14:00"],
+  "30/08/2025": ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"],
+  "31/08/2025": ["10:00", "11:00", "12:00", "13:00", "14:00", "17:00"],
 };
 
 interface SeatDetail {
@@ -123,24 +123,42 @@ const seatPrices: Record<string, number> = {
 
 export default function MovieDetailPage({ params }: MovieDetailPageProps) {
   const { slug } = params;
+  const searchParams = useSearchParams();
   const movie = data.find((m) => m.slug === slug);
+  const router = useRouter();
 
-  const [selectedShowtime, setSelectedShowtime] = React.useState<string[]>([]);
   const [selectedTime, setSelectedTime] = React.useState<string | null>(null);
   const [selectedSeats, setSelectedSeats] = React.useState<SeatDetail[]>([]);
+  const [value, setValue] = React.useState(0);
 
   if (!movie) {
     notFound();
   }
 
+  const dateFromParams = searchParams.get("date");
+  const timeFromParams = searchParams.get("time");
+
+  useEffect(() => {
+    if (dateFromParams && timeFromParams) {
+      const dates = Object.keys(showtimes);
+      const dateIndex = dates.findIndex((date) => date === dateFromParams);
+
+      if (dateIndex !== -1) {
+        setValue(dateIndex);
+        setSelectedTime(timeFromParams);
+      }
+    }
+  }, [dateFromParams, timeFromParams]);
+
   const pageStyle = {
     backgroundImage: `url(${movie.img.replace("w=256", "w=1920")})`,
   };
 
-  const [value, setValue] = React.useState(0);
-
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    setSelectedTime(null);
+    setSelectedSeats([]);
+    router.push(`/movies/${slug}`);
   };
 
   const handleSelectSeat = (seat: SeatDetail) => {
@@ -153,6 +171,7 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
       setSelectedSeats((prev) => prev.filter((s) => s.name !== seat.name));
     }
   };
+
   const emptySeat = (name: string) => {
     for (const element of selectedSeats) {
       if (element.name === name) {
@@ -177,6 +196,8 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
     }
     return total;
   }, [selectedSeats]);
+
+  const dates = Object.keys(showtimes);
 
   return (
     <div className="movie-detail-page-container">
@@ -233,14 +254,13 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
           className="tab-container"
           TabIndicatorProps={{ style: { display: "none" } }}
         >
-          {Object.entries(showtimes).map((time, index) => (
+          {dates.map((date, index) => (
             <Tab
               key={index}
-              label={time[0]}
+              label={date}
               {...a11yProps(index)}
               className="name-tab"
               onClick={() => {
-                setSelectedShowtime(time[1]);
                 setSelectedTime(null);
                 setSelectedSeats([]);
               }}
@@ -248,156 +268,84 @@ export default function MovieDetailPage({ params }: MovieDetailPageProps) {
           ))}
         </Tabs>
         <div className="tab-panel">
-          <CustomTabPanel value={value} index={0}>
-            <p className="note">
-              Lưu ý: Khán giả dưới 13 tuổi chỉ chọn suất chiếu kết thúc trước
-              22h và Khán giả dưới 16 tuổi chỉ chọn suất chiếu kết thúc trước
-              23h.
-            </p>
-            <div className="showtime-buttons">
-              {selectedShowtime?.map((time, index) => (
-                <MyButton
-                  className="button"
-                  key={index}
-                  onClick={() => {
-                    setSelectedTime(time); // chọn 1 giờ, lưu lại thành mảng chứa 1 phần tử
-                    setSelectedSeats([]); // reset ghế
-                  }}
-                >
-                  {time}
-                </MyButton>
-              ))}
-            </div>
-            {selectedTime && (
-              <>
-                <div className="selected-time">
-                  Suất chiếu đã chọn: {selectedTime}
-                </div>
-                {ROOM2.map((row, rowIndex) => (
-                  <div className="seat-row" key={rowIndex}>
-                    {row.map((seat) => (
-                      <div
-                        key={seat.name}
-                        onClick={() => handleSelectSeat(seat)}
-                        className={`seat ${seat.type.toLowerCase()} ${bookedSeats.includes(seat.name) ? "booked" : ""}  ${selectedSeats.includes(seat) ? "selected" : ""} `}
-                      >
-                        {seat.name}
-                      </div>
-                    ))}
-                  </div>
+          {dates.map((date, tabIndex) => (
+            <CustomTabPanel key={tabIndex} value={value} index={tabIndex}>
+              <p className="note">
+                Lưu ý: Khán giả dưới 13 tuổi chỉ chọn suất chiếu kết thúc trước
+                22h và Khán giả dưới 16 tuổi chỉ chọn suất chiếu kết thúc trước
+                23h.
+              </p>
+              <div className="showtime-buttons">
+                {showtimes[date].map((time, index) => (
+                  <MyButton
+                    className={`button ${selectedTime === time ? "Mui-selected" : ""}`}
+                    key={index}
+                    onClick={() => {
+                      setSelectedTime(time);
+                      setSelectedSeats([]);
+                      router.push(`/movies/${slug}`);
+                    }}
+                  >
+                    {time}
+                  </MyButton>
                 ))}
-                <div className="category-seat-container">
-                  <div className="category-seat-booked">
-                    <div className="category-seat-dot"></div>
-                    <h1>Ghế đã đặt</h1>
+              </div>
+              {selectedTime && (
+                <>
+                  <div className="selected-time">
+                    Suất chiếu đã chọn: {selectedTime} - Ngày: {date}
                   </div>
-                  <div className="category-seat-selected">
-                    <div className="category-seat-dot"></div>
-                    <h1>Ghế bạn chọn</h1>
+                  {(tabIndex === 0 ? ROOM2 : ROOM1).map((row, rowIndex) => (
+                    <div className="seat-row" key={rowIndex}>
+                      {row.map((seat) => (
+                        <div
+                          key={seat.name}
+                          onClick={() => handleSelectSeat(seat)}
+                          className={`seat ${seat.type.toLowerCase()} ${bookedSeats.includes(seat.name) ? "booked" : ""}  ${selectedSeats.includes(seat) ? "selected" : ""} `}
+                        >
+                          {seat.name}
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                  <div className="category-seat-container">
+                    <div className="category-seat-booked">
+                      <div className="category-seat-dot"></div>
+                      <h1>Ghế đã đặt</h1>
+                    </div>
+                    <div className="category-seat-selected">
+                      <div className="category-seat-dot"></div>
+                      <h1>Ghế bạn chọn</h1>
+                    </div>
+                    <div className="category-seat-normal">
+                      <div className="category-seat-dot"></div>
+                      <h1>Ghế thường</h1>
+                    </div>
+                    <div className="category-seat-vip">
+                      <div className="category-seat-dot"></div>
+                      <h1>Ghế VIP</h1>
+                    </div>
+                    <div className="category-seat-double">
+                      <div className="category-seat-dot"></div>
+                      <h1>Ghế đôi</h1>
+                    </div>
                   </div>
-                  <div className="category-seat-normal">
-                    <div className="category-seat-dot"></div>
-                    <h1>Ghế thường</h1>
+                  <div className="info-seat-selected">
+                    <div>
+                      <p>
+                        Ghế đã chọn:
+                        {selectedSeats.map((seat) => seat.name).join(", ")}
+                      </p>
+                      <p>Tổng tiền: {totalPrice.toLocaleString("vi-VN")}đ</p>
+                    </div>
+                    <Link href="/payment">
+                      <MyButton className="button-payment">Thanh toán</MyButton>
+                    </Link>
                   </div>
-                  <div className="category-seat-vip">
-                    <div className="category-seat-dot"></div>
-                    <h1>Ghế VIP</h1>
-                  </div>
-                  <div className="category-seat-double">
-                    <div className="category-seat-dot"></div>
-                    <h1>Ghế đôi</h1>
-                  </div>
-                </div>
-                <div className="info-seat-selected">
-                  <div>
-                    <p>
-                      Ghế đã chọn:
-                      {selectedSeats.map((seat) => seat.name).join(", ")}
-                    </p>
-                    <p>Tổng tiền: {totalPrice.toLocaleString("vi-VN")}đ</p>
-                  </div>
-                  <Link href="/payment">
-                    <MyButton className="button-payment">Thanh toán</MyButton>
-                  </Link>
-                </div>
-              </>
-            )}
-          </CustomTabPanel>
-          <CustomTabPanel value={value} index={2}>
-            <p className="note">
-              Lưu ý: Khán giả dưới 13 tuổi chỉ chọn suất chiếu kết thúc trước
-              22h và Khán giả dưới 16 tuổi chỉ chọn suất chiếu kết thúc trước
-              23h.
-            </p>
-            <div className="showtime-buttons">
-              {selectedShowtime?.map((time, index) => (
-                <MyButton
-                  className="button"
-                  key={index}
-                  onClick={() => {
-                    setSelectedTime(time); // chọn 1 giờ, lưu lại thành mảng chứa 1 phần tử
-                    setSelectedSeats([]); // reset ghế
-                  }}
-                >
-                  {time}
-                </MyButton>
-              ))}
-            </div>
-            {selectedTime && (
-              <>
-                <div className="selected-showtime">
-                  Suất chiếu đã chọn: {selectedTime}
-                </div>
-                {ROOM1.map((row, rowIndex) => (
-                  <div className="seat-row" key={rowIndex}>
-                    {row.map((seat) => (
-                      <div
-                        key={seat.name}
-                        onClick={() => handleSelectSeat(seat)}
-                        className={`seat ${seat.type.toLowerCase()} ${bookedSeats.includes(seat.name) ? "booked" : ""}  ${selectedSeats.includes(seat) ? "selected" : ""} `}
-                      >
-                        {seat.name}
-                      </div>
-                    ))}
-                  </div>
-                ))}
-                <div className="category-seat-container">
-                  <div className="category-seat-booked">
-                    <div className="category-seat-dot"></div>
-                    <h1>Ghế đã đặt</h1>
-                  </div>
-                  <div className="category-seat-selected">
-                    <div className="category-seat-dot"></div>
-                    <h1>Ghế bạn chọn</h1>
-                  </div>
-                  <div className="category-seat-normal">
-                    <div className="category-seat-dot"></div>
-                    <h1>Ghế thường</h1>
-                  </div>
-                  <div className="category-seat-vip">
-                    <div className="category-seat-dot"></div>
-                    <h1>Ghế VIP</h1>
-                  </div>
-                  <div className="category-seat-double">
-                    <div className="category-seat-dot"></div>
-                    <h1>Ghế đôi</h1>
-                  </div>
-                </div>
-                <div className="info-seat-selected">
-                  <div>
-                    <p>
-                      Ghế đã chọn:
-                      {selectedSeats.map((seat) => seat.name).join(", ")}
-                    </p>
-                    <p>Tổng tiền: {totalPrice.toLocaleString("vi-VN")}đ</p>
-                  </div>
-                  <Link href="/payment">
-                    <MyButton className="button-payment">Thanh toán</MyButton>
-                  </Link>
-                </div>
-              </>
-            )}
-          </CustomTabPanel>
+                </>
+              )}
+            </CustomTabPanel>
+          ))}
         </div>
       </div>
     </div>
