@@ -75,13 +75,13 @@ export default function HomePage() {
     },
   ];
   return (
-    <div className="page">
-      <div className="page__container">
+    <div className="home-page">
+      <div className="home-page__container">
         <Banner />
         <Container>
-          <div className="page__title">
-            <div className="page__title-left">
-              <div className="page__title-dot"></div>
+          <div className="home-page__title">
+            <div className="home-page__title-left">
+              <div className="home-page__title-dot"></div>
               <h1>Phim đang chiếu</h1>
             </div>
             <a href="/movies">Xem tất cả</a>
@@ -104,9 +104,9 @@ export default function HomePage() {
             ))}
           </Grid>
 
-          <div className="page__title">
-            <div className="page__title-left">
-              <div className="page__title-dot"></div>
+          <div className="home-page__title">
+            <div className="home-page__title-left">
+              <div className="home-page__title-dot"></div>
               <h1>Phim sắp chiếu</h1>
             </div>
           </div>
@@ -128,12 +128,12 @@ export default function HomePage() {
           </Grid>
         </Container>
       </div>
-      <div className="page__container-responsive">
+      <div className="home-page__container-responsive">
         <Banner />
         <Container>
-          <div className="page__title">
-            <div className="page__title-left">
-              <div className="page__title-dot"></div>
+          <div className="home-page__title">
+            <div className="home-page__title-left">
+              <div className="home-page__title-dot"></div>
               <h1>Phim đang chiếu</h1>
             </div>
             <a href="/movies">Xem tất cả</a>
@@ -174,9 +174,9 @@ export default function HomePage() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="page__title">
-            <div className="page__title-left">
-              <div className="page__title-dot"></div>
+          <div className="home-page__title">
+            <div className="home-page__title-left">
+              <div className="home-page__title-dot"></div>
               <h1>Phim sắp chiếu</h1>
             </div>
           </div>
